@@ -493,7 +493,7 @@ button, input, select, textarea { font: inherit; }
 .gallery-item .g-title{padding:1rem;color:var(--text);font:700 .88rem/1.4 'Lato',sans-serif;text-align:center;}
 .video-placeholder{width:100%;height:210px;background:linear-gradient(135deg,#0F172A,#334155);display:grid;place-items:center;color:#fff;font:900 1.4rem/1 'Lato',sans-serif;}
 .hero-visual{position:relative;display:grid;place-items:center;}
-.hero-equipment{width:100%;max-width:600px;height:410px;object-fit:cover;border-radius:18px;opacity:.5;filter:saturate(.7) contrast(1.05);}
+.hero-equipment{width:100%;max-width:600px;height:410px;object-fit:cover;object-position:center;border-radius:18px;opacity:.86;filter:saturate(.82) contrast(1.05);box-shadow:0 24px 70px rgba(0,0,0,.32);}
 .hero-visual .waveform-card{position:absolute;left:50%;bottom:1rem;transform:translateX(-50%);backdrop-filter:blur(14px);background:rgba(15,23,42,.82);animation:none;}
 .not-found{min-height:72vh;padding-top:10rem;display:grid;align-items:center;text-align:center;}
 .not-found h1{font:900 clamp(2.5rem,7vw,5rem)/1 'Lato',sans-serif;color:#fff;max-width:820px;margin:0 auto 1rem;}
