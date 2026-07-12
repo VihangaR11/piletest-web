@@ -38,22 +38,28 @@ observer && document.querySelectorAll('.svc-card, .proj-card, .con-card, .equip-
 });
 
 // --- Dark Mode Toggle Logic ---
+const storedTheme = localStorage.getItem('theme');
+const initialTheme = storedTheme === 'dark' ? 'dark' : 'light';
+document.documentElement.setAttribute('data-theme', initialTheme);
+
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.getElementById('theme-toggle');
   if (!themeToggle) return;
-  
-  // Check local storage for theme
-  const storedTheme = localStorage.getItem('theme');
-  const currentTheme = storedTheme === 'dark' ? 'dark' : 'light';
-  document.documentElement.setAttribute('data-theme', currentTheme);
-  themeToggle.setAttribute('aria-label', currentTheme === 'dark' ? 'Use light theme' : 'Use dark theme');
+
+  const syncThemeButton = theme => {
+    const useLight = theme === 'dark';
+    themeToggle.textContent = useLight ? '☀' : '☾';
+    themeToggle.setAttribute('aria-label', useLight ? 'Use light theme' : 'Use dark theme');
+    themeToggle.title = useLight ? 'Use light theme' : 'Use dark theme';
+  };
+  syncThemeButton(initialTheme);
   
   themeToggle.addEventListener('click', () => {
     let theme = document.documentElement.getAttribute('data-theme');
     let newTheme = theme === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-    themeToggle.setAttribute('aria-label', newTheme === 'dark' ? 'Use light theme' : 'Use dark theme');
+    syncThemeButton(newTheme);
   });
 });
 
