@@ -19,23 +19,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Intersection Observer for fade-in
+// Respect reduced-motion preferences without ever hiding page content.
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const observer = !reduceMotion && 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 }) : null;
-
-observer && document.querySelectorAll('.svc-card, .proj-card, .con-card, .equip-sm, .equip-big').forEach(el => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-  observer.observe(el);
-});
 
 // Count verified company statistics once they enter the viewport.
 const counters = document.querySelectorAll('[data-count]');
