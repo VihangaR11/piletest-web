@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!themeToggle) return;
   
   // Check local storage for theme
-  const currentTheme = localStorage.getItem('theme') || 'light';
+  const storedTheme = localStorage.getItem('theme');
+  const currentTheme = storedTheme === 'dark' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', currentTheme);
   themeToggle.setAttribute('aria-label', currentTheme === 'dark' ? 'Use light theme' : 'Use dark theme');
   
