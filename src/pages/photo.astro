@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import content from '../content/pages/photo.html?raw';
+---
+<BaseLayout title="Photo Gallery | PileTeST Consultants" description="Field-work and equipment highlights from PileTeST foundation-testing projects in Sri Lanka.">
+  <Fragment set:html={content} />
+</BaseLayout>

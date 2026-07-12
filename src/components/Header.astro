@@ -1,0 +1,26 @@
+---
+import { navigation } from '../data/site';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
+---
+<nav id="navbar" aria-label="Primary navigation">
+  <div class="nav-inner">
+    <a href={`${base}index.html`} class="nav-logo" aria-label="PileTeST Consultants home">
+      <img class="site-logo" src={`${base}assets/images/branding/logo.webp`} alt="PileTeST" width="260" height="87" />
+      <div class="logo-text">Consultants (PVT) LTD<br /><span>Foundation quality assurance</span></div>
+    </a>
+    <div class="nav-links" id="primary-navigation">
+      {navigation.map((item) => item.children ? (
+        <div class="dropdown">
+          <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label} ▾</a>
+          <div class="dropdown-content">
+            {item.children.map((child) => <a href={`${base}${child.href}`}>{child.label}</a>)}
+          </div>
+        </div>
+      ) : <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
+    </div>
+    <button id="mobile-menu-btn" class="hamburger" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">☰</button>
+    <button id="theme-toggle" class="theme-btn" type="button" aria-label="Use dark theme" title="Use dark theme">☾</button>
+    <a href={`${base}contact.html`} class="nav-cta">Get a Quote</a>
+  </div>
+</nav>

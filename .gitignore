@@ -1,1 +1,5 @@
 old_site_screenshots/
+node_modules/
+dist/
+.astro/
+.DS_Store

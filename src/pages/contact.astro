@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import content from '../content/pages/contact.html?raw';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+---
+<BaseLayout title="Contact | PileTeST Consultants" description="Request a pile-testing quotation or technical consultation from PileTeST Consultants in Sri Lanka.">
+  <script is:inline src={`${base}contact.js`}></script>
+  <Fragment set:html={content} />
+</BaseLayout>
