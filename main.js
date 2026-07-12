@@ -37,6 +37,42 @@ observer && document.querySelectorAll('.svc-card, .proj-card, .con-card, .equip-
   observer.observe(el);
 });
 
+// Count verified company statistics once they enter the viewport.
+const counters = document.querySelectorAll('[data-count]');
+if (counters.length) {
+  const animateCounter = element => {
+    const target = Number(element.dataset.count);
+    const suffix = element.dataset.suffix || '';
+    if (reduceMotion) {
+      element.textContent = target.toLocaleString('en-US') + suffix;
+      return;
+    }
+    const started = performance.now();
+    const duration = 1200;
+    const tick = now => {
+      const progress = Math.min((now - started) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      element.textContent = Math.round(target * eased).toLocaleString('en-US') + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  if ('IntersectionObserver' in window) {
+    const countObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.counted) {
+          entry.target.dataset.counted = 'true';
+          animateCounter(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .5 });
+    counters.forEach(counter => countObserver.observe(counter));
+  } else {
+    counters.forEach(animateCounter);
+  }
+}
+
 // --- Dark Mode Toggle Logic ---
 const storedTheme = localStorage.getItem('theme');
 const initialTheme = storedTheme === 'dark' ? 'dark' : 'light';
