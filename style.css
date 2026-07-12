@@ -623,3 +623,24 @@ body.nav-open{overflow:hidden;}
   .audience-panels ul{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){.audience-panels article{animation:none}}
+/* PILE DYNAMICS TECHNOLOGY GUIDE */
+.pdi-guide-heading{display:grid;grid-template-columns:1fr .9fr;gap:4rem;align-items:end;margin-bottom:2.4rem}
+.pdi-guide-heading h2{margin-bottom:0}
+.pdi-guide-heading>p{color:var(--text3);font-size:.88rem;line-height:1.75}
+.pdi-tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem}
+.pdi-tech-card{background:var(--white);border:1px solid var(--gray2);border-radius:14px;padding:1.6rem;display:flex;flex-direction:column;min-height:300px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.pdi-tech-card:hover{transform:translateY(-3px);border-color:rgba(225,29,72,.35);box-shadow:0 14px 34px rgba(15,23,42,.08)}
+.pdi-tech-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.2rem}
+.pdi-tech-no{color:var(--brand-red);font:800 .7rem/1 'JetBrains Mono',monospace}
+.pdi-tech-type{background:var(--gray1);border:1px solid var(--gray2);border-radius:999px;color:var(--text3);font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;padding:.3rem .55rem}
+.pdi-tech-card h3{color:var(--text);font-size:1.05rem;margin-bottom:.6rem}
+.pdi-tech-card>p{color:var(--text3);font-size:.8rem;line-height:1.7;flex:1}
+.pdi-tech-flow{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;margin:1.3rem 0;padding:.75rem;background:var(--gray1);border-radius:8px}
+.pdi-tech-flow span{color:var(--text2);font:700 .62rem/1.3 'JetBrains Mono',monospace}
+.pdi-tech-flow i{color:var(--brand-red);font-style:normal}
+.pdi-tech-card>a{align-self:flex-start;color:var(--brand-red);font-size:.72rem;font-weight:800;border-bottom:1px solid rgba(225,29,72,.25);padding-bottom:.15rem}
+.pdi-tech-card>a:hover{border-color:var(--brand-red)}
+.pdi-note{margin-top:1.4rem;background:rgba(15,23,42,.05);border-left:3px solid var(--brand-red);border-radius:0 8px 8px 0;padding:1rem 1.2rem;color:var(--text3);font-size:.74rem;line-height:1.65}
+.pdi-note strong{color:var(--text)}
+@media(max-width:800px){.pdi-guide-heading{grid-template-columns:1fr;gap:1rem}.pdi-tech-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.pdi-tech-card{transition:none}.pdi-tech-card:hover{transform:none}}
