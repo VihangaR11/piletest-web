@@ -260,6 +260,44 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
   });
 }
 
+// Offer privacy-friendly contextual guidance to returning visitors.
+(() => {
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  const guide = document.getElementById('returning-guide');
+  const suggestions = {
+    'services.html': ['Continue comparing services', 'Return to the testing methods and specifications you viewed.', 'services.html'],
+    'projects-completed.html': ['Continue exploring project experience', 'Return to visual case studies and detailed project records.', 'projects-completed.html'],
+    'projects-ongoing.html': ['Continue exploring project experience', 'Return to selected records from the company project archive.', 'projects-ongoing.html'],
+    'technical.html': ['Continue reviewing testing technology', 'Return to equipment, software and technical reference material.', 'technical.html'],
+    'photo.html': ['Continue viewing field work', 'Return to photographs of testing, monitoring and investigation work.', 'photo.html'],
+    'video.html': ['Continue viewing field work', 'Return to the company video gallery.', 'video.html'],
+    'research.html': ['Continue exploring research', 'Return to PIT classification research and technical publications.', 'research.html'],
+    'about.html': ['Continue learning about PileTeST', 'Return to the company profile, team and technical expertise.', 'about.html'],
+    'achievements.html': ['Continue viewing company achievements', 'Return to certification and testing milestone records.', 'achievements.html']
+  };
+  try {
+    const previousPage = localStorage.getItem('piletest:last-page');
+    const dismissed = sessionStorage.getItem('piletest:guide-dismissed') === 'true';
+    if (currentPage === 'index.html' && guide && previousPage && suggestions[previousPage] && !dismissed) {
+      const [title, copy, href] = suggestions[previousPage];
+      guide.querySelector('#returning-title').textContent = title;
+      guide.querySelector('#returning-copy').textContent = copy;
+      guide.querySelector('#returning-link').href = href;
+      guide.hidden = false;
+      requestAnimationFrame(() => guide.classList.add('visible'));
+      guide.querySelector('#returning-close').addEventListener('click', () => {
+        guide.classList.remove('visible');
+        sessionStorage.setItem('piletest:guide-dismissed', 'true');
+        setTimeout(() => { guide.hidden = true; }, reduceMotion ? 0 : 200);
+      });
+    } else if (currentPage !== 'index.html' && suggestions[currentPage]) {
+      localStorage.setItem('piletest:last-page', currentPage);
+      sessionStorage.removeItem('piletest:guide-dismissed');
+    }
+  } catch {
+    // Storage may be unavailable in private browsing; the site remains fully usable.
+  }
+})();
 // Provide a compact return control on long pages.
 const backToTop = document.createElement('button');
 backToTop.className = 'back-to-top';
