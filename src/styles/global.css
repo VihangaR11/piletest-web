@@ -818,3 +818,13 @@ body{overflow-x:clip}
   .context-guide button{grid-column:3;grid-row:1;align-self:start}
 }
 @media(prefers-reduced-motion:reduce){.context-guide{transition:none}}
+/* REUSABLE PAGE CTA */
+.page-cta{padding:3.5rem 0;background:linear-gradient(120deg,#111827,#1e293b);border-top:1px solid rgba(255,255,255,.08)}
+.page-cta-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.page-cta h2{max-width:700px;color:#fff;font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:.65rem}
+.page-cta p{max-width:680px;color:rgba(255,255,255,.56);font-size:.82rem;line-height:1.7}
+.page-cta-actions{display:flex;flex-direction:column;align-items:stretch;gap:.7rem;min-width:210px}
+.page-cta-actions a{text-align:center}
+.page-cta-call{display:inline-flex;align-items:center;justify-content:center;min-height:42px;border:1px solid rgba(255,255,255,.2);border-radius:6px;color:#fff;font-size:.75rem;font-weight:800;padding:.55rem .85rem}
+.page-cta-call:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+@media(max-width:760px){.page-cta-inner{grid-template-columns:1fr;gap:1.5rem}.page-cta-actions{min-width:0;align-items:stretch}}

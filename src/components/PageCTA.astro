@@ -1,0 +1,17 @@
+---
+import { site } from '../data/site';
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : import.meta.env.BASE_URL + '/';
+---
+<section class="page-cta" aria-labelledby="page-cta-title">
+  <div class="container page-cta-inner">
+    <div>
+      <div class="eyebrow-brand-red">Talk to the technical team</div>
+      <h2 id="page-cta-title">Need guidance for a foundation testing project?</h2>
+      <p>Share the site location, pile details, required test or project specification. The team will help clarify preparation and quotation requirements.</p>
+    </div>
+    <div class="page-cta-actions">
+      <a class="btn-brand-red" href={base + 'contact.html'}>Request a quotation</a>
+      <a class="page-cta-call" href={site.phoneHref}>Call {site.phone}</a>
+    </div>
+  </div>
+</section>
