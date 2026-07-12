@@ -58,6 +58,23 @@ if (counters.length) {
   }
 }
 
+// Animate service activity bars only when the dashboard enters view.
+document.querySelectorAll('.service-dashboard').forEach(dashboard => {
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    dashboard.classList.add('is-visible');
+    return;
+  }
+  dashboard.classList.add('enhanced');
+  const dashboardObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        dashboard.classList.add('is-visible');
+        dashboardObserver.disconnect();
+      }
+    });
+  }, { threshold: .2 });
+  dashboardObserver.observe(dashboard);
+});
 // --- Dark Mode Toggle Logic ---
 const storedTheme = localStorage.getItem('theme');
 const initialTheme = storedTheme === 'dark' ? 'dark' : 'light';
