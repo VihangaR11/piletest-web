@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery | PileTeST Consultants</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Ubuntu:wght@300;400;500;700&family=Sanchez&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<meta name="description" content="PileTeST Consultants - Sri Lanka's premier pile testing company. View our photo and video gallery.">
+<link rel="stylesheet" href="style.css">
+<style>
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .gallery-item { background: var(--gray1); border: 1px solid var(--gray2); border-radius: 8px; overflow: hidden; }
+  .gallery-item img { width: 100%; height: 200px; object-fit: cover; display: block; }
+  .gallery-item .g-title { padding: 1rem; font-family: 'Lato', sans-serif; font-weight: 700; color: var(--brand-dark); font-size: 0.9rem; text-align: center; }
+  .video-placeholder { width: 100%; height: 200px; background: var(--brand-dark); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; }
+</style>
+</head>
+<body>
+<nav id="navbar"><div class="nav-inner">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-box">PiLETeST</div>
+    <div class="logo-text">Consultants (PVT) LTD<br><span>ISO 9001:2015 Certified</span></div>
+  </a>
+  <div class="nav-links">
+  <a href="index.html">Home</a>
+  <div class="dropdown">
+    <a href="about.html">About Us ?</a>
+    <div class="dropdown-content">
+      <a href="achievements.html">Achievements</a>
+      <a href="pdf/brochure.pdf" target="_blank">Brochure</a>
+    </div>
+  </div>
+  <a href="services.html">Services</a>
+  <div class="dropdown">
+    <a href="#">Projects ?</a>
+    <div class="dropdown-content">
+      <a href="projects-ongoing.html">Ongoing Projects</a>
+      <a href="projects-completed.html">Completed Projects</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <a href="#">Gallery ?</a>
+    <div class="dropdown-content">
+      <a href="photo.html">Photo Gallery</a>
+      <a href="video.html">Video Gallery</a>
+    </div>
+  </div>
+  <a href="technical.html">Technical Spec</a>
+  <a href="research.html">R & D</a>
+</div>
+  <button id="theme-toggle" class="theme-btn" title="Toggle Dark Mode">??</button><a href="contact.html" class="nav-cta">Get a Quote</a>
+</div></nav>
+
+<div class="page-hero">
+  <h1>Our Gallery</h1>
+  <p>Visual documentation of our projects, equipment, and field testing in Sri Lanka.</p>
+</div>
+<div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span class="current">Gallery</span></div>
+
+
+
+<section class="section-sand">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow-brand-dark">Demonstrations</div>
+      <h2>Video Gallery</h2>
+    </div>
+    <div class="gallery-grid">
+      <!-- PLACEHOLDERS FOR VIDEOS -->
+      <div class="gallery-item"><div class="video-placeholder">?</div><div class="g-title">Dynamic Load Testing</div></div>
+      <div class="gallery-item"><div class="video-placeholder">?</div><div class="g-title">Cross Hole Sonic Logging</div></div>
+      <div class="gallery-item"><div class="video-placeholder">?</div><div class="g-title">Pile Integrity Test</div></div>
+      <div class="gallery-item"><div class="video-placeholder">?</div><div class="g-title">Dynamic Cone Penetration</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><div class="logo-box">PiLETeST</div><div class="logo-text">Consultants (PVT) LTD<br><span>ISO 9001:2015</span></div></div>
+        <p class="footer-desc">Committed to Quality Assurance of Deep Foundations. Serving Sri Lanka's construction industry since 2014.</p>
+      </div>
+      <div>
+        <div class="footer-title">Services</div>
+        <div class="footer-links">
+          <a href="services.html#pda">Dynamic Pile Testing</a>
+          <a href="services.html#pit">PIT Low Strain Testing</a>
+          <a href="services.html#csl">Cross-Hole Sonic Logging</a>
+          <a href="services.html#slt">Static Load Testing</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Company</div>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="projects.html">Projects</a>
+          <a href="gallery.html">Gallery</a>
+          <a href="equipment.html">Equipment</a>
+          <a href="ai.html">AI Platform</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Contact</div>
+        <div class="footer-contact">
+          <div>?? 655A Halgahadeniya Rd, Gothatuwa</div>
+          <div>?? <a href="tel:+94703600600">+94 70 3 600 600</a></div>
+          <div>?? <a href="mailto:info@piletest.lk">info@piletest.lk</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Piletest Consultants (PVT) LTD</span><span>ISO 9001:2015</span></div>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
