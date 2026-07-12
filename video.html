@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Video Gallery | PileTeST Consultants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Ubuntu:wght@300;400;500;700&family=Sanchez&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<meta name="description" content="PileTeST Consultants - Sri Lanka's premier pile testing company. View our photo and video gallery.">
+<meta name="description" content="Pile-testing demonstration topics including PDA, CSL, PIT and dynamic cone penetration testing.">
 <link rel="stylesheet" href="style.css">
 <style>
   .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
@@ -13,8 +15,10 @@
   .gallery-item .g-title { padding: 1rem; font-family: 'Lato', sans-serif; font-weight: 700; color: var(--brand-dark); font-size: 0.9rem; text-align: center; }
   .video-placeholder { width: 100%; height: 200px; background: var(--brand-dark); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; }
 </style>
+<link rel="canonical" href="https://www.piletest.lk/video.html">
 </head>
 <body>
+<a class="skip-link" href="#content-start">Skip to main content</a>
 <nav id="navbar"><div class="nav-inner">
   <a href="index.html" class="nav-logo">
     <div class="logo-box">PiLETeST</div>
@@ -23,22 +27,21 @@
   <div class="nav-links">
   <a href="index.html">Home</a>
   <div class="dropdown">
-    <a href="about.html">About Us ?</a>
+    <a href="about.html">About Us ▾</a>
     <div class="dropdown-content">
       <a href="achievements.html">Achievements</a>
-      <a href="pdf/brochure.pdf" target="_blank">Brochure</a>
     </div>
   </div>
   <a href="services.html">Services</a>
   <div class="dropdown">
-    <a href="#">Projects ?</a>
+    <a href="projects-ongoing.html">Projects ▾</a>
     <div class="dropdown-content">
       <a href="projects-ongoing.html">Ongoing Projects</a>
       <a href="projects-completed.html">Completed Projects</a>
     </div>
   </div>
   <div class="dropdown">
-    <a href="#">Gallery ?</a>
+    <a href="photo.html">Gallery ▾</a>
     <div class="dropdown-content">
       <a href="photo.html">Photo Gallery</a>
       <a href="video.html">Video Gallery</a>
@@ -47,14 +50,14 @@
   <a href="technical.html">Technical Spec</a>
   <a href="research.html">R & D</a>
 </div>
-  <button id="mobile-menu-btn" class="hamburger" title="Menu">?</button><button id="theme-toggle" class="theme-btn" title="Toggle Dark Mode">??</button><a href="contact.html" class="nav-cta">Get a Quote</a>
+  <button id="mobile-menu-btn" class="hamburger" type="button" title="Menu" aria-label="Open navigation">☰</button><button id="theme-toggle" class="theme-btn" type="button" title="Toggle color theme" aria-label="Use dark theme">◐</button><a href="contact.html" class="nav-cta">Get a Quote</a>
 </div></nav>
 
-<div class="page-hero">
+<div class="page-hero" id="content-start" tabindex="-1">
   <h1>Video Gallery</h1>
   <p>Visual documentation of our projects, equipment, and field testing in Sri Lanka.</p>
 </div>
-<div class="breadcrumb"><a href="index.html">Home</a><span class="sep">�</span><span class="current">Gallery</span></div>
+<div class="breadcrumb"><a href="index.html">Home</a><span class="sep">�</span><span class="current">Gallery</span></div>
 
 
 
@@ -65,11 +68,10 @@
       <h2>Video Gallery</h2>
     </div>
     <div class="gallery-grid">
-      <!-- PLACEHOLDERS FOR VIDEOS -->
-      <div class="gallery-item"><div class="video-placeholder">?</div><div class="g-title">Dynamic Load Testing</div></div>
-      <div class="gallery-item"><div class="video-placeholder">?</div><div class="g-title">Cross Hole Sonic Logging</div></div>
-      <div class="gallery-item"><div class="video-placeholder">?</div><div class="g-title">Pile Integrity Test</div></div>
-      <div class="gallery-item"><div class="video-placeholder">?</div><div class="g-title">Dynamic Cone Penetration</div></div>
+      <a class="gallery-item" href="contact.html"><div class="video-placeholder">PDA</div><div class="g-title">Request a Dynamic Load Testing Demonstration</div></a>
+      <a class="gallery-item" href="contact.html"><div class="video-placeholder">CSL</div><div class="g-title">Request a Cross-Hole Sonic Logging Demonstration</div></a>
+      <a class="gallery-item" href="contact.html"><div class="video-placeholder">PIT</div><div class="g-title">Request a Pile Integrity Test Demonstration</div></a>
+      <a class="gallery-item" href="contact.html"><div class="video-placeholder">DCPT</div><div class="g-title">Request a Dynamic Cone Penetration Demonstration</div></a>
     </div>
   </div>
 </section>
@@ -109,7 +111,7 @@
         </div>
       </div>
     </div>
-    <div class="footer-bottom"><span>� 2026 Piletest Consultants (PVT) LTD</span><span>ISO 9001:2015</span></div>
+    <div class="footer-bottom"><span>� 2026 Piletest Consultants (PVT) LTD</span><span>ISO 9001:2015</span></div>
   </div>
 </footer>
 <script src="main.js"></script>

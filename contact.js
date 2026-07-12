@@ -1,5 +1,5 @@
 // contact.js — handles form submission to backend API
-const API_URL = 'http://localhost:3001/api/contact';
+const API_URL = document.documentElement.dataset.contactEndpoint || '';
 
 document.addEventListener('DOMContentLoaded', () => {
   const form   = document.getElementById('contact-form');
@@ -36,7 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Submit
+    // When no backend endpoint is configured, open the visitor's email client
+    // with a complete, pre-filled enquiry instead of silently failing.
+    if (!API_URL) {
+      const subject = encodeURIComponent(`Website enquiry: ${data.service || 'Pile testing services'}`);
+      const body = encodeURIComponent(
+        `Name: ${data.first_name} ${data.last_name}\n` +
+        `Company: ${data.company || 'Not provided'}\n` +
+        `Email: ${data.email}\nPhone: ${data.phone || 'Not provided'}\n` +
+        `Service: ${data.service || 'Not selected'}\n\nProject details:\n${data.message}`
+      );
+      showResult('success', 'Your email app is opening with the enquiry details. Please send the prepared message.');
+      window.location.href = `mailto:info@piletest.lk?subject=${subject}&body=${body}`;
+      return;
+    }
+
+    // Submit to a configured production endpoint.
     btn.disabled    = true;
     btn.textContent = 'Sending…';
     result.style.display = 'none';

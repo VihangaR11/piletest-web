@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.piletest.lk/</loc><priority>1.0</priority></url>
+  <url><loc>https://www.piletest.lk/about.html</loc></url>
+  <url><loc>https://www.piletest.lk/achievements.html</loc></url>
+  <url><loc>https://www.piletest.lk/services.html</loc><priority>0.9</priority></url>
+  <url><loc>https://www.piletest.lk/projects-ongoing.html</loc></url>
+  <url><loc>https://www.piletest.lk/projects-completed.html</loc></url>
+  <url><loc>https://www.piletest.lk/technical.html</loc></url>
+  <url><loc>https://www.piletest.lk/research.html</loc></url>
+  <url><loc>https://www.piletest.lk/photo.html</loc></url>
+  <url><loc>https://www.piletest.lk/video.html</loc></url>
+  <url><loc>https://www.piletest.lk/contact.html</loc><priority>0.9</priority></url>
+</urlset>

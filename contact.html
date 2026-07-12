@@ -1,29 +1,32 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Contact | PileTeST Consultants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Ubuntu:wght@300;400;500;700&family=Sanchez&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <meta name="description" content="PileTeST Consultants - Sri Lanka's premier pile testing company. We provide PDA, PIT, CSL, Static Load Testing and geotechnical engineering services.">
-<link rel="stylesheet" href="style.css"></head><body>
+  <meta name="description" content="Request a pile-testing quotation or technical consultation from PileTeST Consultants in Sri Lanka.">
+<link rel="stylesheet" href="style.css"><link rel="canonical" href="https://www.piletest.lk/contact.html">
+</head><body>
+<a class="skip-link" href="#content-start">Skip to main content</a>
 <nav id="navbar"><div class="nav-inner">
   <a href="index.html" class="nav-logo"><div class="logo-box">PiLETeST</div><div class="logo-text">Consultants (PVT) LTD<br><span>ISO 9001:2015 Certified</span></div></a>
   <div class="nav-links">
   <a href="index.html">Home</a>
   <div class="dropdown">
-    <a href="about.html">About Us ?</a>
+    <a href="about.html">About Us ▾</a>
     <div class="dropdown-content">
       <a href="achievements.html">Achievements</a>
-      <a href="pdf/brochure.pdf" target="_blank">Brochure</a>
     </div>
   </div>
   <a href="services.html">Services</a>
   <div class="dropdown">
-    <a href="#">Projects ?</a>
+    <a href="projects-ongoing.html">Projects ▾</a>
     <div class="dropdown-content">
       <a href="projects-ongoing.html">Ongoing Projects</a>
       <a href="projects-completed.html">Completed Projects</a>
     </div>
   </div>
   <div class="dropdown">
-    <a href="#">Gallery ?</a>
+    <a href="photo.html">Gallery ▾</a>
     <div class="dropdown-content">
       <a href="photo.html">Photo Gallery</a>
       <a href="video.html">Video Gallery</a>
@@ -32,10 +35,10 @@
   <a href="technical.html">Technical Spec</a>
   <a href="research.html">R & D</a>
 </div>
-  <button id="mobile-menu-btn" class="hamburger" title="Menu">?</button><button id="theme-toggle" class="theme-btn" title="Toggle Dark Mode">??</button><a href="contact.html" class="nav-cta">Get a Quote</a>
+  <button id="mobile-menu-btn" class="hamburger" type="button" title="Menu" aria-label="Open navigation">☰</button><button id="theme-toggle" class="theme-btn" type="button" title="Toggle color theme" aria-label="Use dark theme">◐</button><a href="contact.html" class="nav-cta">Get a Quote</a>
 </div></nav>
 
-<div class="page-hero"><h1>Contact Us</h1><p>Get in touch for pile testing services, quotes, or project inquiries.</p></div>
+<div class="page-hero" id="content-start" tabindex="-1"><h1>Contact Us</h1><p>Get in touch for pile testing services, quotes, or project inquiries.</p></div>
 <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span class="current">Contact</span></div>
 
 <section class="section-dark">
@@ -55,18 +58,18 @@
           <div class="ci"><span class="ci-icon">📘</span><div><div class="ci-label">Facebook</div><div class="ci-value"><a href="https://www.facebook.com/www.piletest.lk/">facebook.com/www.piletest.lk</a></div></div></div>
         </div>
       </div>
-      <div class="contact-form">
+      <form class="contact-form" id="contact-form" novalidate>
         <div class="cf-title">Send us a Message</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
-          <div class="cf-group"><label>First Name</label><input type="text" placeholder="Amal"></div>
-          <div class="cf-group"><label>Last Name</label><input type="text" placeholder="Perera"></div>
+          <div class="cf-group"><label for="first_name">First Name <span aria-hidden="true">*</span></label><input id="first_name" name="first_name" type="text" autocomplete="given-name" required placeholder="Amal"></div>
+          <div class="cf-group"><label for="last_name">Last Name <span aria-hidden="true">*</span></label><input id="last_name" name="last_name" type="text" autocomplete="family-name" required placeholder="Perera"></div>
         </div>
-        <div class="cf-group"><label>Company / Organization</label><input type="text" placeholder="Construction Company (PVT) LTD"></div>
-        <div class="cf-group"><label>Email Address</label><input type="email" placeholder="engineer@company.lk"></div>
-        <div class="cf-group"><label>Phone Number</label><input type="tel" placeholder="+94 77 123 4567"></div>
-        <div class="cf-group"><label>Service Required</label>
-          <select>
-            <option>Select a service…</option>
+        <div class="cf-group"><label for="company">Company / Organization</label><input id="company" name="company" type="text" autocomplete="organization" placeholder="Construction Company (PVT) LTD"></div>
+        <div class="cf-group"><label for="email">Email Address <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" required placeholder="engineer@company.lk"></div>
+        <div class="cf-group"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+94 77 123 4567"></div>
+        <div class="cf-group"><label for="service">Service Required</label>
+          <select id="service" name="service">
+            <option value="">Select a service…</option>
             <option>Low Strain Integrity Testing (PIT)</option>
             <option>Dynamic Pile Testing (PDA)</option>
             <option>Static Load Testing (SLT)</option>
@@ -80,21 +83,22 @@
             <option>Other</option>
           </select>
         </div>
-        <div class="cf-group"><label>Project Description</label>
-          <textarea rows="4" placeholder="Describe your project, location, pile type, number of piles, timeline…"></textarea>
+        <div class="cf-group"><label for="message">Project Description <span aria-hidden="true">*</span></label>
+          <textarea id="message" name="message" rows="4" minlength="10" required placeholder="Describe your project, location, pile type, number of piles, timeline…"></textarea>
         </div>
-        <button class="cf-submit">Send Message →</button>
+        <button class="cf-submit" id="submit-btn" type="submit">Send Message →</button>
+        <div id="form-result" class="form-result" role="status" aria-live="polite"></div>
         <div style="font-size:.72rem;color:rgba(255,255,255,.25);margin-top:.8rem;text-align:center;">
           We typically respond within 1 business day.
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </section>
 
 <footer><div class="container">
   <div class="footer-grid">
-    <div><div class="footer-logo"><div class="logo-box">PiLETeST</div><div class="logo-text">Consultants (PVT) LTD<br><span>ISO 9001:2015</span></div></div><p class="footer-desc">Committed to Quality Assurance of Deep Foundations. Reg. No. PV 106295.</p><div class="socials"><a href="https://www.facebook.com/www.piletest.lk/" class="soc">f</a><a href="#" class="soc">in</a></div></div>
+    <div><div class="footer-logo"><div class="logo-box">PiLETeST</div><div class="logo-text">Consultants (PVT) LTD<br><span>ISO 9001:2015</span></div></div><p class="footer-desc">Committed to Quality Assurance of Deep Foundations. Reg. No. PV 106295.</p><div class="socials"><a href="https://www.facebook.com/www.piletest.lk/" class="soc">f</a></div></div>
     <div><div class="footer-title">Services</div><div class="footer-links"><a href="services.html#pda">Dynamic Pile Testing</a><a href="services.html#pit">PIT Testing</a><a href="services.html#csl">CSL Testing</a><a href="services.html#slt">Static Load Testing</a></div></div>
     <div><div class="footer-title">Company</div><div class="footer-links"><a href="about.html">About Us</a><a href="projects-ongoing.html">Projects</a><a href="photo.html">Gallery</a><a href="technical.html">Technical</a><a href="research.html">R&D / AI Platform</a></div></div>
     <div><div class="footer-title">Contact</div><div class="footer-contact"><div>📍 655A Halgahadeniya Rd, Gothatuwa, Sri Lanka</div><div>📞 <a href="tel:+94703600600">+94 70 3 600 600</a></div><div>✉️ <a href="mailto:info@piletest.lk">info@piletest.lk</a></div></div></div>
