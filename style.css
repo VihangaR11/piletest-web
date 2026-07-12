@@ -4,6 +4,16 @@
   --sand:#F8FAFC;--white:#fff;--gray1:#F1F5F9;--gray2:#E2E8F0;
   --text:#334155;--text2:#475569;--text3:#64748B;
 }
+[data-theme="dark"] {
+  --white: #0F172A;
+  --sand: #1E293B;
+  --gray1: #1E293B;
+  --gray2: #334155;
+  --text: #F8FAFC;
+  --text2: #E2E8F0;
+  --text3: #CBD5E1;
+  --brand-dark: #F8FAFC; 
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Ubuntu',sans-serif;color:var(--text);background:var(--white);}
@@ -323,4 +333,18 @@ footer{background:#060F1C;padding:4rem 0 0;}
   .two-col,.about-grid,.contact-wrapper,.footer-grid,.projects-grid{grid-template-columns:1fr;}
   .service-detail{grid-template-columns:1fr;}
   nav .nav-links{display:none;}
+}
+
+.theme-btn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-right: -0.5rem;
+  transition: transform 0.2s;
+}
+.theme-btn:hover {
+  transform: scale(1.1);
 }
