@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Platform | PileTeST Consultants</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="PileTeST Consultants - Sri Lanka's premier pile testing company. We provide PDA, PIT, CSL, Static Load Testing and geotechnical engineering services.">
+<link rel="stylesheet" href="style.css"></head><body>
+<nav id="navbar"><div class="nav-inner">
+  <a href="index.html" class="nav-logo"><div class="logo-box">PiLETeST</div><div class="logo-text">Consultants (PVT) LTD<br><span>ISO 9001:2015 Certified</span></div></a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="equipment.html">Equipment</a><a href="ai.html" class="active">AI Platform</a><a href="contact.html">Contact</a></div>
+  <a href="contact.html" class="nav-cta">Get a Quote</a>
+</div></nav>
+
+<div class="page-hero" style="padding-bottom:80px;">
+  <div class="eyebrow" style="justify-content:center;margin-bottom:1rem;">🤖 Research Innovation · Final Year Project 2026</div>
+  <h1>AI-Powered PIT Classification</h1>
+  <p>Machine learning for automated pile integrity assessment — trained on 5,534 labeled pile records from 4,338 field reports.</p>
+</div>
+<div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span class="current">AI Platform</span></div>
+
+<section class="section-light">
+  <div class="container">
+    <div class="two-col" style="gap:5rem;">
+      <div>
+        <div class="eyebrow-dark">The Research</div>
+        <h2>What is PIT-AI?</h2>
+        <p style="color:var(--text3);font-size:.92rem;line-height:1.8;margin-bottom:1.2rem;">PIT-AI is a machine learning classifier developed as a Final Year Project in collaboration with PileTeST Consultants (PVT) LTD. It automatically analyses PIT (Pile Integrity Test) velocity graph images and classifies them into standard pile integrity categories.</p>
+        <p style="color:var(--text3);font-size:.92rem;line-height:1.8;margin-bottom:1.2rem;">The model uses physics-informed feature extraction — 43 signal processing features derived from velocity waveforms — trained on real field data from Sri Lanka's construction industry.</p>
+        <div style="background:var(--gray1);border-radius:12px;padding:1.5rem;margin-top:1.5rem;">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:1rem;">Model Performance</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;">
+            <div style="background:var(--white);border:1px solid var(--gray2);border-radius:8px;padding:.9rem;text-align:center;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;color:var(--navy);">75.34%</div>
+              <div style="font-size:.72rem;color:var(--text3);">Model Accuracy</div>
+            </div>
+            <div style="background:var(--white);border:1px solid var(--gray2);border-radius:8px;padding:.9rem;text-align:center;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;color:var(--navy);">5,534</div>
+              <div style="font-size:.72rem;color:var(--text3);">Training Samples</div>
+            </div>
+            <div style="background:var(--white);border:1px solid var(--gray2);border-radius:8px;padding:.9rem;text-align:center;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;color:var(--navy);">4,338</div>
+              <div style="font-size:.72rem;color:var(--text3);">PIT Reports Used</div>
+            </div>
+            <div style="background:var(--white);border:1px solid var(--gray2);border-radius:8px;padding:.9rem;text-align:center;">
+              <div style="font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;color:var(--navy);">43</div>
+              <div style="font-size:.72rem;color:var(--text3);">Signal Features</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow-dark">Live Demo</div>
+        <h2>Classification Result</h2>
+        <div class="ai-demo-box" style="margin-top:1rem;">
+          <div class="ai-demo-hdr"><span class="mono-sm">PIT-AI CLASSIFIER · SAMPLE RESULT</span><span class="ai-live">● MODEL READY</span></div>
+          <div class="ai-result-box"><div class="ai-cls">AA</div><div class="ai-cls-name">Sound Shaft Integrity</div><div class="ai-conf">Confidence: 87.3%</div></div>
+          <div class="ai-bars">
+            <div class="ai-bar-row"><span class="ai-bar-lbl green">AA</span><div class="ai-bar-bg"><div class="ai-bar-fill" style="width:87%;background:#00C896;"></div></div><span class="ai-bar-pct">87.3%</span></div>
+            <div class="ai-bar-row"><span class="ai-bar-lbl blue">AB</span><div class="ai-bar-bg"><div class="ai-bar-fill" style="width:13%;background:#3B82F6;"></div></div><span class="ai-bar-pct">12.7%</span></div>
+          </div>
+          <div class="ai-feats">
+            <div class="af-row"><span>Toe Reflection</span><span class="green">✅ Detected</span></div>
+            <div class="af-row"><span>Toe Strength</span><span>0.847</span></div>
+            <div class="af-row"><span>Signal Peaks</span><span>4</span></div>
+            <div class="af-row"><span>Spectral Entropy</span><span>3.241</span></div>
+            <div class="af-row"><span>Late Energy</span><span>12.482</span></div>
+            <div class="af-row"><span>Status</span><span class="green">✅ AUTO-CLASSIFIED</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-dark">
+  <div class="container">
+    <div class="section-header"><div class="eyebrow-green">Technical Details</div><h2 class="light">How It Works</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2rem;">
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.8rem;">📸</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">1. Upload Graph</div>
+        <div style="color:rgba(255,255,255,.45);font-size:.78rem;line-height:1.6;">Upload average velocity graph image from PIT-W® software output.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.8rem;">⚡</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">2. Extract Features</div>
+        <div style="color:rgba(255,255,255,.45);font-size:.78rem;line-height:1.6;">43 physics-informed features extracted: toe reflection, spectral entropy, energy distribution, peaks.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.8rem;">🤖</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">3. ML Classification</div>
+        <div style="color:rgba(255,255,255,.45);font-size:.78rem;line-height:1.6;">Random Forest Ensemble predicts class with probability score for each category.</div>
+      </div>
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:1.5rem;text-align:center;">
+        <div style="font-size:2rem;margin-bottom:.8rem;">✅</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">4. Safe Decision</div>
+        <div style="color:rgba(255,255,255,.45);font-size:.78rem;line-height:1.6;">High confidence → auto-classify. Low confidence → flag for engineer review.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-sand">
+  <div class="container">
+    <div class="section-header"><div class="eyebrow-dark">Classification System</div><h2>PIT Classification Reference</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem;">
+      <div style="background:var(--white);border:1px solid var(--gray2);border-radius:10px;padding:1.5rem;border-top:3px solid #15803D;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#15803D;margin-bottom:.5rem;">AA</div>
+        <div style="font-weight:600;font-size:.9rem;color:var(--text);margin-bottom:.5rem;">Sound Shaft Integrity</div>
+        <div style="color:var(--text3);font-size:.8rem;line-height:1.65;">Clear toe reflection at reported depth. Wave speed within acceptable range. Minor variations before toe — integrity confirmed.</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--gray2);border-radius:10px;padding:1.5rem;border-top:3px solid #1D4ED8;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#1D4ED8;margin-bottom:.5rem;">AB</div>
+        <div style="font-weight:600;font-size:.9rem;color:var(--text);margin-bottom:.5rem;">No Major Defect Indicated</div>
+        <div style="color:var(--text3);font-size:.8rem;line-height:1.65;">No toe signal, no defect reflections. Acceptable integrity but depth uncertain. Does not confirm shaft is flawless over full length.</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--gray2);border-radius:10px;padding:1.5rem;border-top:3px solid #6D28D9;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#6D28D9;margin-bottom:.5rem;">ABx</div>
+        <div style="font-weight:600;font-size:.9rem;color:var(--text);margin-bottom:.5rem;">No Major Defect to Depth x</div>
+        <div style="color:var(--text3);font-size:.8rem;line-height:1.65;">Method limitations prevent full length interpretation. Long piles or high soil resistance. No defect to depth x confirmed.</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--gray2);border-radius:10px;padding:1.5rem;border-top:3px solid #B45309;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#B45309;margin-bottom:.5rem;">PFx</div>
+        <div style="font-weight:600;font-size:.9rem;color:var(--text);margin-bottom:.5rem;">Probable Flaw at Depth x</div>
+        <div style="color:var(--text3);font-size:.8rem;line-height:1.65;">Toe reflection visible PLUS reflection from unplanned reduction of size or material quality. Quantitative analysis recommended.</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--gray2);border-radius:10px;padding:1.5rem;border-top:3px solid #B91C1C;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#B91C1C;margin-bottom:.5rem;">PDx</div>
+        <div style="font-weight:600;font-size:.9rem;color:var(--text);margin-bottom:.5rem;">Probable Defect at Depth x</div>
+        <div style="color:var(--text3);font-size:.8rem;line-height:1.65;">Strong reflection from major size/material reduction. No clear toe reflection — wave blocked by defect. Remediation may be required.</div>
+      </div>
+      <div style="background:var(--white);border:1px solid var(--gray2);border-radius:10px;padding:1.5rem;border-top:3px solid #0F766E;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#0F766E;margin-bottom:.5rem;">IR</div>
+        <div style="font-weight:600;font-size:.9rem;color:var(--text);margin-bottom:.5rem;">Inconclusive Record</div>
+        <div style="color:var(--text3);font-size:.8rem;line-height:1.65;">Poor pile top quality or low concrete strength. Tested too early. Retesting after waiting and/or pile top cleaning is advised.</div>
+      </div>
+    </div>
+    <div style="background:var(--white);border:1px solid #FDE68A;border-radius:10px;padding:1.5rem;margin-top:1.5rem;border-left:4px solid #D97706;">
+      <div style="font-weight:700;color:#92400E;margin-bottom:.5rem;">⚠️ Important Disclaimer</div>
+      <div style="color:#78350F;font-size:.84rem;line-height:1.7;">PIT-AI is a research demonstration tool. All classifications must be verified by a certified geotechnical engineer before any construction or safety decisions. The model achieves 75.34% accuracy and is not approved for standalone use on life-critical structures.</div>
+    </div>
+  </div>
+</section>
+
+<footer><div class="container">
+  <div class="footer-grid">
+    <div><div class="footer-logo"><div class="logo-box">PiLETeST</div><div class="logo-text">Consultants (PVT) LTD<br><span>ISO 9001:2015</span></div></div><p class="footer-desc">Committed to Quality Assurance of Deep Foundations.</p></div>
+    <div><div class="footer-title">Services</div><div class="footer-links"><a href="services.html#pda">Dynamic Pile Testing</a><a href="services.html#pit">PIT Testing</a><a href="services.html#csl">CSL Testing</a></div></div>
+    <div><div class="footer-title">Company</div><div class="footer-links"><a href="about.html">About Us</a><a href="projects.html">Projects</a><a href="equipment.html">Equipment</a><a href="contact.html">Contact</a></div></div>
+    <div><div class="footer-title">Contact</div><div class="footer-contact"><div>📞 <a href="tel:+94703600600">+94 70 3 600 600</a></div><div>✉️ <a href="mailto:info@piletest.lk">info@piletest.lk</a></div></div></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 Piletest Consultants (PVT) LTD</span><span>ISO 9001:2015 · SLAB · RvA</span></div>
+</div></footer>
+  <script src="main.js"></script>
+</body></html>
