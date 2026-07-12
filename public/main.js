@@ -101,52 +101,70 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// --- Mobile Hamburger Menu ---
+// --- Mobile Navigation ---
 document.addEventListener('DOMContentLoaded', () => {
   const hamburgerBtn = document.getElementById('mobile-menu-btn');
-  const navLinks = document.querySelector('.nav-links');
-  if (hamburgerBtn && navLinks) {
-    hamburgerBtn.setAttribute('aria-expanded', 'false');
-    hamburgerBtn.setAttribute('aria-controls', 'primary-navigation');
-    navLinks.id = 'primary-navigation';
-    const closeMenu = () => {
-      navLinks.classList.remove('active');
-      navLinks.querySelectorAll('.dropdown.open').forEach(item => item.classList.remove('open'));
-      hamburgerBtn.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('nav-open');
-    };
-    hamburgerBtn.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('active');
-      hamburgerBtn.setAttribute('aria-expanded', String(open));
-      document.body.classList.toggle('nav-open', open);
-    });
-    navLinks.querySelectorAll('.dropdown > a').forEach(trigger => {
-      trigger.addEventListener('click', event => {
-        if (window.matchMedia('(max-width: 900px)').matches) {
-          const dropdown = trigger.closest('.dropdown');
-          if (!dropdown.classList.contains('open')) {
-            event.preventDefault();
-            navLinks.querySelectorAll('.dropdown.open').forEach(item => {
-              if (item !== dropdown) item.classList.remove('open');
-            });
-            dropdown.classList.add('open');
-          }
-        }
-      });
-    });
-    navLinks.addEventListener('click', event => {
-      const link = event.target.closest('a');
-      if (link && !link.matches('.dropdown > a')) closeMenu();
-    });
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') closeMenu();
-    });
-    window.addEventListener('resize', () => {
-      if (!window.matchMedia('(max-width: 900px)').matches) closeMenu();
-    });
-  }
-});
+  const navLinks = document.getElementById('primary-navigation');
+  const navScrim = document.getElementById('nav-scrim');
+  if (!hamburgerBtn || !navLinks) return;
 
+  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+  const dropdowns = [...navLinks.querySelectorAll('.dropdown')];
+
+  const closeDropdowns = except => {
+    dropdowns.forEach(dropdown => {
+      if (dropdown !== except) {
+        dropdown.classList.remove('open');
+        dropdown.querySelector(':scope > a')?.setAttribute('aria-expanded', 'false');
+      }
+    });
+  };
+
+  const setMenu = open => {
+    const shouldOpen = Boolean(open && isMobile());
+    navLinks.classList.toggle('active', shouldOpen);
+    navScrim?.classList.toggle('active', shouldOpen);
+    hamburgerBtn.setAttribute('aria-expanded', String(shouldOpen));
+    hamburgerBtn.setAttribute('aria-label', shouldOpen ? 'Close navigation' : 'Open navigation');
+    hamburgerBtn.textContent = shouldOpen ? '×' : '☰';
+    document.body.classList.toggle('nav-open', shouldOpen);
+    if (!shouldOpen) closeDropdowns();
+  };
+
+  dropdowns.forEach(dropdown => {
+    const trigger = dropdown.querySelector(':scope > a');
+    if (!trigger) return;
+    trigger.setAttribute('aria-haspopup', 'true');
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.addEventListener('click', event => {
+      if (!isMobile()) return;
+      if (!dropdown.classList.contains('open')) {
+        event.preventDefault();
+        closeDropdowns(dropdown);
+        dropdown.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  hamburgerBtn.addEventListener('click', () => {
+    setMenu(hamburgerBtn.getAttribute('aria-expanded') !== 'true');
+  });
+  navScrim?.addEventListener('click', () => setMenu(false));
+  navLinks.addEventListener('click', event => {
+    const link = event.target.closest('a');
+    if (link && !link.matches('.dropdown > a')) setMenu(false);
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
+      setMenu(false);
+      hamburgerBtn.focus();
+    }
+  });
+  window.addEventListener('resize', () => {
+    if (!isMobile()) setMenu(false);
+  });
+});
 // Mark the current page for sighted and screen-reader users.
 document.querySelectorAll('.nav-links a').forEach(link => {
   const target = new URL(link.href, location.href);

@@ -717,3 +717,86 @@ body.nav-open{overflow:hidden;}
 @media(max-width:700px){.dashboard-heading{grid-template-columns:1fr;gap:1rem}.activity-chart{height:210px}.activity-bars{gap:.2rem}.activity-bar small{font-size:.48rem;transform:rotate(-45deg);transform-origin:center}.distribution-content{grid-template-columns:1fr}.distribution-donut{margin:auto}}
 @media(max-width:440px){.dashboard-metrics{grid-template-columns:1fr 1fr}.dashboard-metric{padding:1rem}.dashboard-metric strong{font-size:1.3rem}.dashboard-panel{padding:1rem}}
 @media(prefers-reduced-motion:reduce){.activity-bar>span{transition:none!important;transform:none!important}}
+/* RESPONSIVE SYSTEM OVERRIDES */
+.nav-mobile-cta,.nav-scrim{display:none}
+.responsive-grid{display:grid;min-width:0}
+.responsive-grid.cols-2,.responsive-grid.form-split{grid-template-columns:repeat(2,minmax(0,1fr))}
+.responsive-grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.responsive-grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+main{min-width:0}
+body{overflow-x:clip}
+
+@media(max-width:900px){
+  .nav-inner{padding:0 1rem;gap:.5rem}
+  #navbar .nav-links{display:flex!important;position:fixed;z-index:102;top:64px;left:0;width:min(340px,88vw);height:calc(100dvh - 64px);margin:0;padding:1rem;gap:.25rem;overflow-y:auto;overscroll-behavior:contain;background:var(--brand-dark);border-right:1px solid rgba(255,255,255,.1);box-shadow:18px 0 50px rgba(0,0,0,.35);align-items:stretch;align-self:auto;flex-direction:column;transform:translateX(-105%);visibility:hidden;pointer-events:none;transition:transform .25s ease,visibility .25s}
+  #navbar .nav-links.active{transform:translateX(0);visibility:visible;pointer-events:auto}
+  #navbar .nav-links>a,#navbar .dropdown>a{display:flex;width:100%;min-height:48px;padding:.75rem;border-radius:7px;color:rgba(255,255,255,.78);font-size:.86rem;justify-content:space-between}
+  #navbar .nav-links>a:hover,#navbar .nav-links>a[aria-current="page"],#navbar .dropdown>a:hover,#navbar .dropdown>a[aria-current="page"]{background:rgba(255,255,255,.06);color:#fff}
+  #navbar .dropdown{display:flex;align-items:stretch;align-self:auto;flex-direction:column;width:100%}
+  #navbar .dropdown-content{position:static;display:none;width:100%;min-width:0;margin:.1rem 0 .35rem;padding:.25rem 0 .25rem .65rem;background:transparent;border:0;border-left:1px solid rgba(255,255,255,.12);border-radius:0;box-shadow:none}
+  #navbar .dropdown:hover .dropdown-content,#navbar .dropdown:focus-within .dropdown-content{display:none}
+  #navbar .dropdown.open .dropdown-content{display:block}
+  #navbar .dropdown-content a{display:flex;align-items:center;min-height:44px;padding:.65rem .8rem;border-radius:6px;color:rgba(255,255,255,.68)!important}
+  #navbar .dropdown-content a:hover,#navbar .dropdown-content a[aria-current="page"]{background:rgba(225,29,72,.2);color:#fff!important}
+  #navbar .nav-mobile-cta{display:flex!important;justify-content:center!important;margin-top:.6rem;background:var(--brand-red)!important;color:#fff!important;font-weight:800}
+  .hamburger{position:relative;z-index:103;display:grid;place-items:center;width:44px;height:44px;min-width:44px;margin-left:auto;padding:0;border-radius:7px;font-size:1.6rem;line-height:1}
+  .nav-scrim{position:fixed;z-index:101;display:block;inset:64px 0 0;border:0;background:rgba(2,6,23,.68);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s,visibility .25s}
+  .nav-scrim.active{opacity:1;visibility:visible;pointer-events:auto}
+  .responsive-grid.cols-3,.responsive-grid.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .equip-big{grid-column:auto}
+  .proj-table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .proj-table th,.proj-table td{min-width:120px}
+  .proj-table td:first-child{min-width:220px}
+}
+
+@media(max-width:700px){
+  .nav-logo .logo-text{display:none}
+  .nav-cta{display:none}
+  .nav-logo{margin-right:auto}
+  .nav-logo .site-logo{width:112px}
+  .theme-btn{width:44px;height:44px;flex-basis:44px}
+  .container{padding-inline:1rem}
+  section{padding-block:3.75rem}
+  .page-hero{padding:92px 1rem 42px}
+  .page-hero h1{font-size:clamp(2rem,10vw,3rem);line-height:1.05;overflow-wrap:anywhere}
+  .page-hero p{font-size:.9rem}
+  .breadcrumb{padding:.65rem 1rem;white-space:nowrap;overflow-x:auto}
+  .hero{min-height:auto;padding:92px 1rem 0;gap:2rem}
+  .hero h1{font-size:clamp(2.45rem,13vw,3.7rem)}
+  .hero-sub{font-size:.9rem}
+  .hero-stats{margin:2.5rem -1rem 0;padding:0;position:static}
+  .hs{padding:1rem .5rem}.hs-n{font-size:1.55rem}.hs-l{font-size:.58rem}
+  .service-detail{padding:2.75rem 0;gap:1.4rem}
+  .sd-title{font-size:1.65rem}
+  .contact-form{padding:1.2rem}
+  .footer-grid{gap:2rem}.footer-bottom{flex-direction:column;gap:.5rem;align-items:flex-start}
+  .responsive-grid.cols-2,.responsive-grid.cols-3,.responsive-grid.cols-4,.responsive-grid.form-split{grid-template-columns:1fr}
+  .services-grid,.equip-hero-grid{grid-template-columns:1fr}
+  .cons-grid,.stats-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .equip-big{padding:1.5rem}
+  .achievement-image{height:auto;max-height:420px}
+  .gallery-grid{grid-template-columns:1fr}
+  .gallery-item img,.video-placeholder{height:230px}
+  .activity-chart{min-width:500px}
+  .activity-panel{overflow-x:auto}
+  .dashboard-panel-head{position:sticky;left:0}
+}
+
+@media(max-width:480px){
+  .nav-inner{padding-inline:.7rem;gap:.25rem}
+  .nav-logo .site-logo{width:96px}
+  .hero-btns{flex-direction:column;align-items:stretch}
+  .hero-btns a{text-align:center}
+  .eyebrow{font-size:.58rem;line-height:1.4}
+  .stats-row{gap:.35rem}.stat-item{padding:.75rem .35rem}.stat-n{font-size:1.65rem}.stat-l{font-size:.56rem}
+  .cons-grid{grid-template-columns:1fr}
+  .dashboard-metrics{grid-template-columns:1fr}
+  .contact-dock{padding:.3rem;gap:.1rem;bottom:max(.45rem,env(safe-area-inset-bottom))}
+  .contact-dock a{min-width:0;padding:.4rem .2rem}.contact-dock strong{font-size:.5rem}
+  main{padding-bottom:72px}
+  .back-to-top{bottom:5.3rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #navbar .nav-links,.nav-scrim{transition:none}
+}
