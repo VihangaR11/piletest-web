@@ -52,3 +52,14 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', newTheme);
   });
 });
+
+// --- Mobile Hamburger Menu ---
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerBtn = document.getElementById('mobile-menu-btn');
+  const navLinks = document.querySelector('.nav-links');
+  if (hamburgerBtn && navLinks) {
+    hamburgerBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+});
