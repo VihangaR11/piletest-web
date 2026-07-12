@@ -6,7 +6,8 @@ export const site = {
   email: 'info@piletest.lk',
   address: '655A Halgahadeniya Road, Gothatuwa, Sri Lanka',
   registration: 'PV 106295',
-  facebook: 'https://www.facebook.com/www.piletest.lk/'
+  facebook: 'https://www.facebook.com/www.piletest.lk',
+  linkedin: 'https://www.linkedin.com/company/pile-test-consultants-pvt-ltd/posts/?feedView=all'
 } as const;
 
 export interface NavItem {

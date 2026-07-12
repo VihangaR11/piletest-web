@@ -318,8 +318,12 @@ footer{background:#060F1C;padding:4rem 0 0;}
 .socials{display:flex;gap:.7rem;}
 .soc{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.12);
   display:flex;align-items:center;justify-content:center;
-  color:rgba(255,255,255,.4);font-size:.8rem;cursor:pointer;transition:all .2s;}
-.soc:hover{border-color:var(--brand-red);color:var(--brand-red);}
+  overflow:hidden;background:#fff;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.soc img{display:block;width:100%;height:100%;object-fit:cover;}
+.soc:hover{border-color:rgba(255,255,255,.5);transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.3);}
+.soc:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+.ci-social-icon{padding:0;overflow:hidden;background:#fff;}
+.ci-social-icon img{display:block;width:100%;height:100%;object-fit:cover;}
 .footer-title{color:rgba(255,255,255,.5);font-size:.68rem;font-weight:700;
   text-transform:uppercase;letter-spacing:.1em;margin-bottom:.9rem;}
 .footer-links{display:flex;flex-direction:column;gap:.5rem;}
