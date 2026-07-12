@@ -136,6 +136,36 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   if (target.pathname === location.pathname) link.setAttribute('aria-current', 'page');
 });
 
+// Let visitors explore content by role without leaving the homepage.
+const audienceTabs = [...document.querySelectorAll('[data-audience-tab]')];
+const audiencePanels = [...document.querySelectorAll('[data-audience-panel]')];
+if (audienceTabs.length && audiencePanels.length) {
+  const activateAudience = (tab, focus = false) => {
+    const audience = tab.dataset.audienceTab;
+    audienceTabs.forEach(item => {
+      const selected = item === tab;
+      item.setAttribute('aria-selected', String(selected));
+      item.tabIndex = selected ? 0 : -1;
+    });
+    audiencePanels.forEach(panel => {
+      panel.hidden = panel.dataset.audiencePanel !== audience;
+    });
+    if (focus) tab.focus();
+  };
+  audienceTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => activateAudience(tab));
+    tab.addEventListener('keydown', event => {
+      if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let next = index;
+      if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = audienceTabs.length - 1;
+      else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % audienceTabs.length;
+      else next = (index - 1 + audienceTabs.length) % audienceTabs.length;
+      activateAudience(audienceTabs[next], true);
+    });
+  });
+}
 // Add fast client-side search to long project tables.
 document.querySelectorAll('.proj-table').forEach((table, index) => {
   const rows = [...table.querySelectorAll('tbody tr')];
