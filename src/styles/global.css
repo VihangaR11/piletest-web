@@ -34,7 +34,7 @@ a{text-decoration:none;color:inherit;}
 .container{max-width:1200px;margin:0 auto;padding:0 2rem;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;
+#navbar{position:fixed;top:0;left:0;right:0;z-index:100;
   background:rgba(15,23,42,.97);backdrop-filter:blur(12px);
   border-bottom:1px solid rgba(255,255,255,.07);}
 .nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;
@@ -338,6 +338,8 @@ footer{background:#060F1C;padding:4rem 0 0;}
 .breadcrumb .sep{margin:0 .5rem;color:rgba(255,255,255,.2);}
 .breadcrumb .current{color:var(--brand-red);}
 
+.contact-dock{top:auto;left:auto;}
+
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;padding-top:80px;}
   .hero-visual{display:none;}
@@ -345,7 +347,7 @@ footer{background:#060F1C;padding:4rem 0 0;}
   .services-grid,.equip-hero-grid,.cons-grid,.stats-row{grid-template-columns:repeat(2,1fr);}
   .two-col,.about-grid,.contact-wrapper,.footer-grid,.projects-grid{grid-template-columns:1fr;}
   .service-detail{grid-template-columns:1fr;}
-  nav .nav-links{display:none;}
+  #navbar .nav-links{display:none;}
 }
 
 .theme-btn {
