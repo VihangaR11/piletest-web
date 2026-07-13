@@ -21,7 +21,6 @@ const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
           </div>
         </div>
       ) : <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
-      <a href={base + 'contact.html'} class="nav-mobile-cta">Get a Quote</a>
     </div>
     <button id="mobile-menu-btn" class="hamburger" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">☰</button>
     <button id="theme-toggle" class="theme-btn" type="button" aria-label="Use dark theme" title="Use dark theme">☾</button>
