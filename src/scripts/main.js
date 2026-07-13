@@ -135,13 +135,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   dropdowns.forEach(dropdown => {
     const toggle = dropdown.querySelector(':scope > .nav-dropdown-toggle');
+    const parentLink = dropdown.querySelector(':scope > a');
     if (!toggle) return;
-    toggle.addEventListener('click', () => {
+    const toggleDropdown = () => {
       if (!isMobile()) return;
       const shouldOpen = !dropdown.classList.contains('open');
       closeDropdowns(shouldOpen ? dropdown : undefined);
       dropdown.classList.toggle('open', shouldOpen);
       toggle.setAttribute('aria-expanded', String(shouldOpen));
+    };
+    toggle.addEventListener('click', toggleDropdown);
+    parentLink?.addEventListener('click', event => {
+      if (!isMobile() || !parentLink.hasAttribute('data-mobile-submenu-trigger')) return;
+      event.preventDefault();
+      toggleDropdown();
     });
   });
 
@@ -151,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
   navScrim?.addEventListener('click', () => setMenu(false));
   navLinks.addEventListener('click', event => {
     const link = event.target.closest('a');
-    if (link) setMenu(false);
+    if (link && !event.defaultPrevented) setMenu(false);
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
