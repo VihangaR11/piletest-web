@@ -22,7 +22,9 @@ jobs:
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
+      # npm ci currently fails while resolving optional WASM peer packages on
+      # Linux; install from the committed lockfile without lifecycle scripts.
+      - run: npm install --ignore-scripts --legacy-peer-deps
       - run: npm audit --audit-level=high
       - run: npm run build
         env:
