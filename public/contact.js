@@ -8,6 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!form) return;
 
+  // Prefill requests arriving from the technical-document library.
+  const params = new URLSearchParams(window.location.search);
+  const requestedService = params.get('service')?.trim();
+  const requestType = params.get('request');
+  if (requestedService) {
+    const matchingOption = [...form.service.options].find(option => option.textContent.trim() === requestedService);
+    form.service.value = matchingOption?.value || 'Other';
+    if (requestType === 'technical' && !form.message.value.trim()) {
+      form.message.value = `Please send the current technical specification and method statement for ${requestedService}.`;
+    }
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 

@@ -40,6 +40,11 @@ export const navigation: readonly NavItem[] = [
     { label: 'Photo Gallery', href: 'photo.html' },
     { label: 'Video Gallery', href: 'video.html' }
   ] },
-  { label: 'Technical', href: 'technical.html' },
+  { label: 'Technical', href: 'technical.html', children: [
+    { label: 'Equipment & Systems', href: 'technical.html#equipment' },
+    { label: 'Analysis Software', href: 'technical.html#software' },
+    { label: 'Request Technical Documents', href: 'technical.html#technical-library' },
+    { label: 'Method References', href: 'technical.html#methods' }
+  ] },
   { label: 'R & D', href: 'research.html' }
 ];

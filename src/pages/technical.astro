@@ -1,7 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import content from '../content/pages/technical.html?raw';
+
+const technicalTopics = [
+  'Dynamic Pile Testing (PDA)', 'Cross-Hole Sonic Logging (CSL)',
+  'Pile Integrity Testing (PIT)', 'Static Load Testing (MLT)',
+  'Concrete Compression Testing', 'Vibration Monitoring',
+  'Noise Level Monitoring', 'Geotechnical Investigation',
+  'Lateral Load Test', 'Instrumented Load Testing (IMLT)',
+  'Rebound Hammer Testing', 'Pullout Testing',
+  'Inclinometer Installation and Monitoring',
+  'Piezometer Installation and Monitoring', 'Settlement Monitoring',
+  'Crack Surveying and Monitoring'
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'PileTeST technical resources',
+  itemListElement: technicalTopics.map((name, index) => ({
+    '@type': 'ListItem', position: index + 1, name
+  }))
+};
 ---
-<BaseLayout title="Technical Spec | PileTeST Consultants" description="Technical specifications for PileTeST testing equipment, standards, measurement ranges and deep-foundation monitoring systems.">
+<BaseLayout title="Technical Resources | PileTeST Consultants" description="Explore PileTeST testing equipment, analysis software, method references and request current technical specifications or method statements." structuredData={structuredData}>
   <Fragment set:html={content} />
 </BaseLayout>
