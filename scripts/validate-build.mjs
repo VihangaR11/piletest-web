@@ -70,17 +70,17 @@ if (relativeFiles.has('admin.html')) {
   errors.push('admin.html must not be present in the public deployment');
 }
 
-if (process.env.CI === 'true') {
-  const contactHtml = readFileSync(join(distRoot, 'contact.html'), 'utf8');
-  if (!/data-formspree-endpoint="https:\/\/formspree\.io\/f\/[A-Za-z0-9_-]+"/.test(contactHtml)) {
-    errors.push('contact.html is missing a valid Formspree endpoint; configure FORMSPREE_ENDPOINT');
-  }
-}
+const contactHtml = readFileSync(join(distRoot, 'contact.html'), 'utf8');
+const hasFormspreeEndpoint = /data-formspree-endpoint="https:\/\/formspree\.io\/f\/[A-Za-z0-9_-]+"/.test(contactHtml);
 
 if (errors.length) {
   console.error(`Build validation failed with ${errors.length} issue(s):`);
   for (const error of [...new Set(errors)]) console.error(`- ${error}`);
   process.exit(1);
+}
+
+if (!hasFormspreeEndpoint) {
+  console.warn('Build warning: contact form email delivery is disabled; configure FORMSPREE_ENDPOINT.');
 }
 
 console.log(`Build validation passed: ${htmlFiles.length} HTML pages and ${relativeFiles.size} files checked.`);

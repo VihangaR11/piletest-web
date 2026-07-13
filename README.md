@@ -21,9 +21,10 @@ The production site is generated in `dist/` and deployed to GitHub Pages by
 `.github/workflows/deploy.yml` whenever `main` is updated.
 
 Deployment is blocked when internal resources are missing, unsafe new-tab links
-or duplicate IDs are present, the private admin page is exposed, or the
-Formspree endpoint has not been configured. A scheduled production health check
-runs every six hours and can also be started manually from GitHub Actions.
+or duplicate IDs are present, or the private admin page is exposed. A missing
+Formspree endpoint produces a build warning and is reported by the scheduled
+production health check, which runs every six hours and can also be started
+manually from GitHub Actions.
 
 ## Contact form email delivery
 
