@@ -35,6 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
       showResult('error', '⚠️ Message must be at least 10 characters.');
       return;
     }
+    if (data.message.length > 5000) {
+      showResult('error', '⚠️ Message must be 5,000 characters or fewer.');
+      return;
+    }
 
     if (!FORMSPREE_ENDPOINT.startsWith('https://formspree.io/f/')) {
       showResult('error',

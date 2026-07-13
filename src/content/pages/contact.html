@@ -27,14 +27,15 @@
       <form class="contact-form" id="contact-form" method="post" novalidate>
         <input type="hidden" name="_subject" value="New PileTeST website enquiry">
         <input type="hidden" name="source" value="PileTeST website contact page">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" hidden aria-hidden="true">
         <div class="cf-title">Send us a Message</div>
         <div class="responsive-grid form-split" style="gap:.8rem;">
-          <div class="cf-group"><label for="first_name">First Name <span aria-hidden="true">*</span></label><input id="first_name" name="first_name" type="text" autocomplete="given-name" required placeholder="Amal"></div>
-          <div class="cf-group"><label for="last_name">Last Name <span aria-hidden="true">*</span></label><input id="last_name" name="last_name" type="text" autocomplete="family-name" required placeholder="Perera"></div>
+          <div class="cf-group"><label for="first_name">First Name <span aria-hidden="true">*</span></label><input id="first_name" name="first_name" type="text" autocomplete="given-name" maxlength="80" required placeholder="Amal"></div>
+          <div class="cf-group"><label for="last_name">Last Name <span aria-hidden="true">*</span></label><input id="last_name" name="last_name" type="text" autocomplete="family-name" maxlength="80" required placeholder="Perera"></div>
         </div>
-        <div class="cf-group"><label for="company">Company / Organization</label><input id="company" name="company" type="text" autocomplete="organization" placeholder="Construction Company (PVT) LTD"></div>
-        <div class="cf-group"><label for="email">Email Address <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" required placeholder="engineer@company.lk"></div>
-        <div class="cf-group"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+94 77 123 4567"></div>
+        <div class="cf-group"><label for="company">Company / Organization</label><input id="company" name="company" type="text" autocomplete="organization" maxlength="160" placeholder="Construction Company (PVT) LTD"></div>
+        <div class="cf-group"><label for="email">Email Address <span aria-hidden="true">*</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="engineer@company.lk"></div>
+        <div class="cf-group"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="40" placeholder="+94 77 123 4567"></div>
         <div class="cf-group"><label for="service">Service Required</label>
           <select id="service" name="service">
             <option value="">Select a service…</option>
@@ -52,7 +53,7 @@
           </select>
         </div>
         <div class="cf-group"><label for="message">Project Description <span aria-hidden="true">*</span></label>
-          <textarea id="message" name="message" rows="4" minlength="10" required placeholder="Describe your project, location, pile type, number of piles, timeline…"></textarea>
+          <textarea id="message" name="message" rows="4" minlength="10" maxlength="5000" required placeholder="Describe your project, location, pile type, number of piles, timeline…"></textarea>
         </div>
         <button class="cf-submit" id="submit-btn" type="submit">Send Message →</button>
         <div id="form-result" class="form-result" role="status" aria-live="polite"></div>

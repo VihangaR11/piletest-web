@@ -13,11 +13,17 @@ npm run dev
 
 ```bash
 npm run build
+npm run validate:build
 npm run preview
 ```
 
 The production site is generated in `dist/` and deployed to GitHub Pages by
 `.github/workflows/deploy.yml` whenever `main` is updated.
+
+Deployment is blocked when internal resources are missing, unsafe new-tab links
+or duplicate IDs are present, the private admin page is exposed, or the
+Formspree endpoint has not been configured. A scheduled production health check
+runs every six hours and can also be started manually from GitHub Actions.
 
 ## Contact form email delivery
 
@@ -41,7 +47,7 @@ public identifiers and will be visible in the generated website.
 - `src/pages/` — Astro routes preserving the existing `.html` URLs
 - `src/styles/` — shared responsive light/dark theme
 - `public/assets/` — production images
-- `public/` — scripts, sitemap, robots file and legacy admin page
+- `public/` — browser scripts, sitemap, robots file and deployable assets
 
 The original root-level HTML/CSS/JS files remain as a migration reference. The
 Astro source under `src/` is now the production implementation.

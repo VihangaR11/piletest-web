@@ -1,0 +1,32 @@
+name: Production health check
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: production-health
+  cancel-in-progress: true
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check critical routes and configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://vihangar11.github.io/piletest-web'
+          for route in index.html contact.html services.html projects-ongoing.html; do
+            curl --fail --silent --show-error --retry 3 --retry-all-errors \
+              --max-time 20 "$base/$route" > /dev/null
+          done
+          contact_html="$(curl --fail --silent --show-error --retry 3 \
+            --retry-all-errors --max-time 20 "$base/contact.html")"
+          grep -Eq 'data-formspree-endpoint="https://formspree.io/f/[A-Za-z0-9_-]+"' \
+            <<< "$contact_html"
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' \
+            --max-time 20 "$base/admin.html")" = '404'
+          test "$(curl --silent --output /dev/null --write-out '%{http_code}' \
+            --max-time 20 "$base/definitely-missing-health-check.html")" = '404'

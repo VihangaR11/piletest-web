@@ -313,8 +313,25 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
   let timer;
   let userPaused = false;
 
-  const showSlide = index => {
-    current = (index + slides.length) % slides.length;
+  const loadSlide = slide => new Promise(resolve => {
+    if (slide.complete && slide.getAttribute('src')) {
+      resolve();
+      return;
+    }
+    const source = slide.dataset.src;
+    if (!source && !slide.getAttribute('src')) {
+      resolve();
+      return;
+    }
+    slide.addEventListener('load', resolve, { once: true });
+    slide.addEventListener('error', resolve, { once: true });
+    if (source && !slide.getAttribute('src')) slide.src = source;
+  });
+
+  const showSlide = async index => {
+    const nextIndex = (index + slides.length) % slides.length;
+    await loadSlide(slides[nextIndex]);
+    current = nextIndex;
     slides.forEach((slide, slideIndex) => {
       const active = slideIndex === current;
       slide.classList.toggle('is-active', active);
@@ -326,6 +343,7 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
       if (active) dot.setAttribute('aria-current', 'true');
       else dot.removeAttribute('aria-current');
     });
+    void loadSlide(slides[(current + 1) % slides.length]);
   };
 
   const stopReel = () => {
@@ -336,7 +354,7 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
   const startReel = () => {
     stopReel();
     if (reduceMotion || userPaused || document.hidden) return;
-    timer = window.setInterval(() => showSlide(current + 1), 2000);
+    timer = window.setInterval(() => void showSlide(current + 1), 2000);
   };
 
   const syncPauseButton = () => {
@@ -346,7 +364,7 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
   };
 
   dots.forEach(dot => dot.addEventListener('click', () => {
-    showSlide(Number(dot.dataset.reelDot));
+    void showSlide(Number(dot.dataset.reelDot));
     startReel();
   }));
   pauseButton.addEventListener('click', () => {
@@ -367,7 +385,7 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
   });
 
   pauseButton.hidden = reduceMotion;
-  showSlide(0);
+  void showSlide(0);
   syncPauseButton();
   startReel();
 })();
