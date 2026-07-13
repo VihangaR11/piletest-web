@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import content from '../content/pages/projects.html?raw';
+
+const projectSchema = {
+  '@type': 'CollectionPage',
+  name: 'PileTeST project statistics and project archives',
+  description: 'Recorded foundation-testing activity and project archives for PileTeST Consultants.'
+};
+---
+<BaseLayout title="Project Statistics | PileTeST Consultants" description="Recorded pile-testing statistics and links to ongoing and completed project archives from PileTeST Consultants." structuredData={projectSchema}>
+  <Fragment set:html={content} />
+</BaseLayout>

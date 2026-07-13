@@ -31,8 +31,9 @@ export const navigation: readonly NavItem[] = [
     { label: 'Testing Experience', href: 'services.html#experience' },
     { label: 'Additional Services', href: 'services.html#additional-services' }
   ] },
-  { label: 'Projects', href: 'projects-ongoing.html', children: [
-    { label: 'Selected Project Archive', href: 'projects-ongoing.html' },
+  { label: 'Projects', href: 'projects.html', children: [
+    { label: 'Overall Statistics', href: 'projects.html' },
+    { label: 'Ongoing Projects', href: 'projects-ongoing.html' },
     { label: 'Completed Projects', href: 'projects-completed.html' }
   ] },
   { label: 'Gallery', href: 'photo.html', children: [
