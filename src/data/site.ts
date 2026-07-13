@@ -21,7 +21,8 @@ export const navigation: readonly NavItem[] = [
   { label: 'About', href: 'about.html', children: [
     { label: 'Vision & Quality', href: 'about.html#vision-quality' },
     { label: 'Our Team', href: 'about.html#our-team' },
-    { label: 'Achievements', href: 'achievements.html' }
+    { label: 'Achievements', href: 'achievements.html' },
+    { label: 'Brochure', href: 'brochure.html' }
   ] },
   { label: 'Services', href: 'services.html' },
   { label: 'Projects', href: 'projects-ongoing.html', children: [
