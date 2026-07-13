@@ -12,7 +12,10 @@ const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
     <div class="nav-links" id="primary-navigation">
       {navigation.map((item) => item.children ? (
         <div class="dropdown">
-          <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label} ▾</a>
+          <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined}>
+            <span>{item.label}</span>
+            <span class="nav-caret" aria-hidden="true"></span>
+          </a>
           <div class="dropdown-content">
             {item.children.map((child) => <a href={`${base}${child.href}`}>{child.label}</a>)}
           </div>
