@@ -18,8 +18,17 @@
       </div>
     </div>
 
-    <div class="pdf-viewer-shell">
-      <iframe class="pdf-viewer" src="assets/documents/company-profile.pdf#view=FitH" title="PileTeST Consultants company profile brochure"></iframe>
+    <div class="pdf-viewer-shell" data-pdf-loader>
+      <div class="pdf-preview" data-pdf-preview>
+        <img src="assets/documents/company-profile-cover.jpg" alt="Cover of the PileTeST Consultants company profile brochure" width="742" height="960" loading="lazy" decoding="async">
+        <div class="pdf-preview-action">
+          <strong>129-page company profile</strong>
+          <span>The 7.3 MB online viewer loads only when requested.</span>
+          <button class="btn-primary" type="button" data-pdf-load>Load Online Viewer</button>
+        </div>
+      </div>
+      <div class="pdf-loading" data-pdf-loading role="status" aria-live="polite" hidden>Loading the online brochure viewer&hellip;</div>
+      <iframe class="pdf-viewer" data-src="assets/documents/company-profile.pdf#view=FitH" title="PileTeST Consultants company profile brochure" loading="lazy" hidden></iframe>
       <p class="pdf-viewer-fallback">If the brochure does not display on your device, <a href="assets/documents/company-profile.pdf" target="_blank" rel="noopener">open the PDF in a new tab</a>.</p>
     </div>
   </div>

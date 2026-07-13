@@ -235,6 +235,26 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
   });
 }
 
+// Defer large embedded PDFs until the visitor explicitly opens the viewer.
+document.querySelectorAll('[data-pdf-loader]').forEach(loader => {
+  const button = loader.querySelector('[data-pdf-load]');
+  const preview = loader.querySelector('[data-pdf-preview]');
+  const loading = loader.querySelector('[data-pdf-loading]');
+  const frame = loader.querySelector('.pdf-viewer[data-src]');
+  if (!button || !preview || !loading || !frame) return;
+
+  button.addEventListener('click', () => {
+    button.disabled = true;
+    preview.hidden = true;
+    loading.hidden = false;
+    frame.hidden = false;
+    frame.addEventListener('load', () => {
+      loading.hidden = true;
+    }, { once: true });
+    frame.src = frame.dataset.src;
+  }, { once: true });
+});
+
 // Rotate the homepage field-work reel every two seconds with accessible controls.
 (() => {
   const reel = document.querySelector('[data-hero-reel]');
@@ -248,6 +268,8 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
   let current = 0;
   let timer;
   let userPaused = false;
+  let reelVisible = !('IntersectionObserver' in window);
+  const saveData = navigator.connection?.saveData === true;
 
   const loadSlide = slide => new Promise(resolve => {
     if (slide.complete && slide.getAttribute('src')) {
@@ -279,7 +301,7 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
       if (active) dot.setAttribute('aria-current', 'true');
       else dot.removeAttribute('aria-current');
     });
-    void loadSlide(slides[(current + 1) % slides.length]);
+    if (!saveData && reelVisible) void loadSlide(slides[(current + 1) % slides.length]);
   };
 
   const stopReel = () => {
@@ -289,7 +311,7 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
 
   const startReel = () => {
     stopReel();
-    if (reduceMotion || userPaused || document.hidden) return;
+    if (reduceMotion || saveData || userPaused || document.hidden || !reelVisible) return;
     timer = window.setInterval(() => void showSlide(current + 1), 2000);
   };
 
@@ -320,7 +342,16 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
     else startReel();
   });
 
-  pauseButton.hidden = reduceMotion;
+  if ('IntersectionObserver' in window) {
+    const reelObserver = new IntersectionObserver(entries => {
+      reelVisible = entries[0]?.isIntersecting === true;
+      if (reelVisible) startReel();
+      else stopReel();
+    }, { rootMargin: '200px 0px', threshold: .01 });
+    reelObserver.observe(reel);
+  }
+
+  pauseButton.hidden = reduceMotion || saveData;
   void showSlide(0);
   syncPauseButton();
   startReel();

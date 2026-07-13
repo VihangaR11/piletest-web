@@ -262,6 +262,11 @@ h2.light{color:#fff;}
 .brochure-actions{display:flex;flex-wrap:wrap;gap:.75rem;flex:0 0 auto}
 .pdf-viewer-shell{padding:1rem;border:1px solid var(--gray2);border-radius:14px;background:var(--white);box-shadow:0 12px 35px rgba(15,23,42,.08)}
 .pdf-viewer{display:block;width:100%;height:clamp(560px,78vh,940px);border:0;border-radius:8px;background:var(--gray1)}
+.pdf-viewer[hidden]{display:none}
+.pdf-preview{display:grid;grid-template-columns:minmax(240px,360px) minmax(0,1fr);align-items:center;gap:clamp(1.5rem,4vw,4rem);min-height:560px;padding:clamp(1.25rem,4vw,3rem);border-radius:8px;background:linear-gradient(135deg,var(--brand-dark),#1e3a5f)}
+.pdf-preview>img{display:block;width:100%;max-height:640px;margin:auto;object-fit:contain;border-radius:4px;box-shadow:0 18px 45px rgba(0,0,0,.4)}
+.pdf-preview-action{display:flex;align-items:flex-start;flex-direction:column;gap:.75rem}.pdf-preview-action strong{color:#fff;font-size:clamp(1.25rem,3vw,2rem)}.pdf-preview-action span{max-width:460px;color:rgba(255,255,255,.68);font-size:.82rem;line-height:1.7}.pdf-preview-action button{margin-top:.5rem;border:0;cursor:pointer}
+.pdf-loading{padding:.9rem;border-radius:8px 8px 0 0;background:var(--gray1);color:var(--text3);font-size:.8rem;font-weight:700;text-align:center}.pdf-loading[hidden]{display:none}
 .pdf-viewer-fallback{margin:.8rem 0 0;color:var(--text3);font-size:.72rem;text-align:center}.pdf-viewer-fallback a{color:var(--brand-red2);font-weight:700}
 .section-dark .section-header p{color:rgba(255,255,255,.58)}
 @media(max-width:900px){
@@ -271,7 +276,7 @@ h2.light{color:#fff;}
 @media(max-width:650px){
   .about-section-nav .container{justify-content:flex-start}
   .staff-grid{grid-template-columns:1fr}
-  .brochure-actions{width:100%}.brochure-actions a{flex:1 1 100%}.pdf-viewer-shell{padding:.5rem}.pdf-viewer{height:70vh}
+  .brochure-actions{width:100%}.brochure-actions a{flex:1 1 100%}.pdf-viewer-shell{padding:.5rem}.pdf-viewer{height:70vh}.pdf-preview{grid-template-columns:1fr;min-height:0;padding:1rem}.pdf-preview>img{max-height:460px}.pdf-preview-action{align-items:stretch;text-align:center}.pdf-preview-action button{width:100%}
 }
 .corp-table{width:100%;border-collapse:collapse;margin-top:1.5rem;}
 .corp-table td{padding:.7rem 1rem;font-size:.85rem;border-bottom:1px solid var(--gray2);color:var(--text);}
