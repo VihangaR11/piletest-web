@@ -18,7 +18,11 @@ export interface NavItem {
 
 export const navigation: readonly NavItem[] = [
   { label: 'Home', href: 'index.html' },
-  { label: 'About', href: 'about.html', children: [{ label: 'Achievements', href: 'achievements.html' }] },
+  { label: 'About', href: 'about.html', children: [
+    { label: 'Vision & Quality', href: 'about.html#vision-quality' },
+    { label: 'Our Team', href: 'about.html#our-team' },
+    { label: 'Achievements', href: 'achievements.html' }
+  ] },
   { label: 'Services', href: 'services.html' },
   { label: 'Projects', href: 'projects-ongoing.html', children: [
     { label: 'Selected Project Archive', href: 'projects-ongoing.html' },

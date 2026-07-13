@@ -15,6 +15,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (el) {
       e.preventDefault();
       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      history.pushState(null, '', `#${id}`);
+      syncCurrentNavigation();
     }
   });
 });
@@ -161,11 +163,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isMobile()) setMenu(false);
   });
 });
-// Mark the current page for sighted and screen-reader users.
-document.querySelectorAll('.nav-links a').forEach(link => {
-  const target = new URL(link.href, location.href);
-  if (target.pathname === location.pathname) link.setAttribute('aria-current', 'page');
-});
+// Mark the current page or subsection for sighted and screen-reader users.
+const syncCurrentNavigation = () => {
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    const target = new URL(link.href, location.href);
+    link.removeAttribute('aria-current');
+    if (target.pathname === location.pathname && target.hash === location.hash) {
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+};
+syncCurrentNavigation();
+window.addEventListener('hashchange', syncCurrentNavigation);
 
 // Add fast client-side search to long project tables.
 document.querySelectorAll('.proj-table').forEach((table, index) => {
