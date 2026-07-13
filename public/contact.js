@@ -1,5 +1,5 @@
-// contact.js — handles form submission to backend API
-const API_URL = document.documentElement.dataset.contactEndpoint || '';
+// contact.js — submits website enquiries to the configured Formspree form.
+const FORMSPREE_ENDPOINT = document.documentElement.dataset.formspreeEndpoint || '';
 
 document.addEventListener('DOMContentLoaded', () => {
   const form   = document.getElementById('contact-form');
@@ -36,42 +36,37 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // When no backend endpoint is configured, open the visitor's email client
-    // with a complete, pre-filled enquiry instead of silently failing.
-    if (!API_URL) {
-      const subject = encodeURIComponent(`Website enquiry: ${data.service || 'Pile testing services'}`);
-      const body = encodeURIComponent(
-        `Name: ${data.first_name} ${data.last_name}\n` +
-        `Company: ${data.company || 'Not provided'}\n` +
-        `Email: ${data.email}\nPhone: ${data.phone || 'Not provided'}\n` +
-        `Service: ${data.service || 'Not selected'}\n\nProject details:\n${data.message}`
-      );
-      showResult('success', 'Your email app is opening with the enquiry details. Please send the prepared message.');
-      window.location.href = `mailto:info@piletest.lk?subject=${subject}&body=${body}`;
+    if (!FORMSPREE_ENDPOINT.startsWith('https://formspree.io/f/')) {
+      showResult('error',
+        '⚠️ The enquiry form is temporarily unavailable. Please email piletestcon@gmail.com.');
       return;
     }
 
-    // Submit to a configured production endpoint.
     btn.disabled    = true;
     btn.textContent = 'Sending…';
     result.style.display = 'none';
 
     try {
-      const res  = await fetch(API_URL, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(data),
-      });
-      const json = await res.json();
+      const formData = new FormData(form);
+      formData.set('_subject', `Website enquiry: ${data.service || 'Pile testing services'}`);
+      formData.set('submitted_at', new Date().toISOString());
+      formData.set('page_url', window.location.href);
 
-      if (res.ok && json.success) {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method:  'POST',
+        headers: { 'Accept': 'application/json' },
+        body: formData,
+      });
+      const json = await res.json().catch(() => ({}));
+
+      if (res.ok) {
         showResult('success',
           '✅ Message sent! We will contact you within 1 business day.');
         form.reset();
       } else {
-        const errMsg = json.errors
-          ? json.errors.join(', ')
-          : json.error || 'Submission failed. Please try again.';
+        const errMsg = Array.isArray(json.errors)
+          ? json.errors.map(error => error.message).filter(Boolean).join(', ')
+          : 'Submission failed. Please try again.';
         showResult('error', `⚠️ ${errMsg}`);
       }
     } catch (err) {

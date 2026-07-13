@@ -24,7 +24,9 @@
           </div>
         </div>
       </div>
-      <form class="contact-form" id="contact-form" novalidate>
+      <form class="contact-form" id="contact-form" method="post" novalidate>
+        <input type="hidden" name="_subject" value="New PileTeST website enquiry">
+        <input type="hidden" name="source" value="PileTeST website contact page">
         <div class="cf-title">Send us a Message</div>
         <div class="responsive-grid form-split" style="gap:.8rem;">
           <div class="cf-group"><label for="first_name">First Name <span aria-hidden="true">*</span></label><input id="first_name" name="first_name" type="text" autocomplete="given-name" required placeholder="Amal"></div>

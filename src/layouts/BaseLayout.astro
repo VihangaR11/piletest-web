@@ -16,7 +16,7 @@ const siteUrl = new URL(base, Astro.site ?? Astro.url.origin).toString();
 const logoUrl = new URL(base + 'assets/images/branding/logo.webp', Astro.site ?? Astro.url.origin).toString();
 const socialImage = new URL(base + 'assets/images/index_img_slider-2.webp', Astro.site ?? Astro.url.origin).toString();
 const currentPage = Astro.url.pathname.split('/').pop() || 'index.html';
-const contactEndpoint = import.meta.env.PUBLIC_CONTACT_ENDPOINT || undefined;
+const formspreeEndpoint = import.meta.env.PUBLIC_FORMSPREE_ENDPOINT || undefined;
 const pageName = title.split('|')[0].trim();
 
 const organizationSchema = {
@@ -71,7 +71,7 @@ const graph = [organizationSchema, websiteSchema, ...(breadcrumbSchema ? [breadc
 const schemaJson = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\u003c');
 ---
 <!doctype html>
-<html lang="en" data-contact-endpoint={contactEndpoint}>
+<html lang="en" data-formspree-endpoint={formspreeEndpoint}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />

@@ -19,6 +19,19 @@ npm run preview
 The production site is generated in `dist/` and deployed to GitHub Pages by
 `.github/workflows/deploy.yml` whenever `main` is updated.
 
+## Contact form email delivery
+
+The contact form submits every field to Formspree and delivers enquiries to the
+recipient configured for that form.
+
+1. Create a free Formspree form and set its recipient to `piletestcon@gmail.com`.
+2. Copy the endpoint shown by Formspree, such as `https://formspree.io/f/abcdwxyz`.
+3. In GitHub, create the repository variable `FORMSPREE_ENDPOINT` with that full URL.
+4. For local testing, copy `.env.example` to `.env` and replace `YOUR_FORM_ID`.
+
+The endpoint is injected during the GitHub Pages build. Formspree form IDs are
+public identifiers and will be visible in the generated website.
+
 ## Project structure
 
 - `src/components/` — shared navigation and footer components
