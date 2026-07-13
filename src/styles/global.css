@@ -287,6 +287,10 @@ h2.light{color:#fff;}
 .info-box .ib-l{font-size:.72rem;color:var(--text3);margin-top:.1rem;}
 
 /* SERVICES PAGE */
+.service-detail,.service-group-heading,.service-anchor{scroll-margin-top:90px}
+.service-group-heading{max-width:780px;padding:3.5rem 0 .25rem}
+.service-group-heading h2{margin:.35rem 0 .7rem;color:var(--text);font-size:clamp(1.65rem,3vw,2.35rem)}
+.service-group-heading p{color:var(--text3);font-size:.9rem;line-height:1.75}
 .service-detail{display:grid;grid-template-columns:2fr 1fr;gap:3rem;
   padding:4rem 0;border-bottom:1px solid var(--gray2);}
 .service-detail:last-child{border:none;}
@@ -298,6 +302,10 @@ h2.light{color:#fff;}
   position:relative;}
 .sd-bullets li::before{content:'✓';position:absolute;left:0;color:var(--brand-red);font-weight:700;}
 .sd-bullets{list-style:none;margin-bottom:1.2rem;}
+.service-aside{display:grid;align-self:start;gap:1rem;min-width:0}
+.service-photo{overflow:hidden;border:1px solid var(--gray2);border-radius:10px;background:var(--gray1);box-shadow:0 10px 28px rgba(15,23,42,.08)}
+.service-photo img{display:block;width:100%;height:auto;aspect-ratio:369/244;object-fit:cover}
+.service-photo figcaption{padding:.7rem .85rem;color:var(--text3);font-size:.68rem;font-weight:700;line-height:1.4}
 .sd-spec{background:var(--brand-dark);color:#fff;border-radius:10px;padding:1.5rem;}
 .sd-spec h5{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;
   text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem;}
@@ -306,6 +314,22 @@ h2.light{color:#fff;}
 .spec-row:last-child{border:none;}
 .spec-row .sk{color:rgba(255,255,255,.45);}
 .spec-row .sv{color:#fff;font-weight:600;}
+.additional-services{padding:4rem 0}
+.additional-service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.additional-service-grid article{padding:1.25rem;border:1px solid rgba(255,255,255,.1);border-radius:11px;background:rgba(255,255,255,.045)}
+.additional-service-grid h3{margin-bottom:.55rem;color:#fff;font-size:.9rem}
+.additional-service-grid p{color:rgba(255,255,255,.58);font-size:.74rem;line-height:1.65}
+.service-cta{display:flex;align-items:center;justify-content:space-between;gap:2rem;margin-top:2rem;padding:1.5rem;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.06)}
+.service-cta h3{margin-bottom:.4rem;color:#fff;font-size:1.05rem}.service-cta p{max-width:680px;color:rgba(255,255,255,.58);font-size:.78rem;line-height:1.6}.service-cta .btn-primary{flex:0 0 auto}
+
+@media(max-width:900px){
+  .additional-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:650px){
+  .service-group-heading{padding-top:2.5rem}
+  .additional-service-grid{grid-template-columns:1fr}
+  .service-cta{align-items:stretch;flex-direction:column}.service-cta .btn-primary{width:100%;text-align:center}
+}
 
 /* EQUIPMENT PAGE */
 .equip-hero-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem;}

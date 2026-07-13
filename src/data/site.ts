@@ -24,7 +24,13 @@ export const navigation: readonly NavItem[] = [
     { label: 'Achievements', href: 'achievements.html' },
     { label: 'Brochure', href: 'brochure.html' }
   ] },
-  { label: 'Services', href: 'services.html' },
+  { label: 'Services', href: 'services.html', children: [
+    { label: 'Dynamic & Integrity Testing', href: 'services.html#foundation-integrity' },
+    { label: 'Load Testing', href: 'services.html#load-testing' },
+    { label: 'Monitoring & Ground Investigation', href: 'services.html#monitoring-investigation' },
+    { label: 'Testing Experience', href: 'services.html#experience' },
+    { label: 'Additional Services', href: 'services.html#additional-services' }
+  ] },
   { label: 'Projects', href: 'projects-ongoing.html', children: [
     { label: 'Selected Project Archive', href: 'projects-ongoing.html' },
     { label: 'Completed Projects', href: 'projects-completed.html' }
