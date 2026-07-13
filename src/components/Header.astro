@@ -16,6 +16,9 @@ const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
             <span>{item.label}</span>
             <span class="nav-caret" aria-hidden="true"></span>
           </a>
+          <button class="nav-dropdown-toggle" type="button" aria-label={`Toggle ${item.label} submenu`} aria-expanded="false">
+            <span class="nav-caret" aria-hidden="true"></span>
+          </button>
           <div class="dropdown-content">
             {item.children.map((child) => <a href={`${base}${child.href}`}>{child.label}</a>)}
           </div>

@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdowns.forEach(dropdown => {
       if (dropdown !== except) {
         dropdown.classList.remove('open');
-        dropdown.querySelector(':scope > a')?.setAttribute('aria-expanded', 'false');
+        dropdown.querySelector(':scope > .nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
       }
     });
   };
@@ -132,18 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   dropdowns.forEach(dropdown => {
-    const trigger = dropdown.querySelector(':scope > a');
-    if (!trigger) return;
-    trigger.setAttribute('aria-haspopup', 'true');
-    trigger.setAttribute('aria-expanded', 'false');
-    trigger.addEventListener('click', event => {
+    const toggle = dropdown.querySelector(':scope > .nav-dropdown-toggle');
+    if (!toggle) return;
+    toggle.addEventListener('click', () => {
       if (!isMobile()) return;
-      if (!dropdown.classList.contains('open')) {
-        event.preventDefault();
-        closeDropdowns(dropdown);
-        dropdown.classList.add('open');
-        trigger.setAttribute('aria-expanded', 'true');
-      }
+      const shouldOpen = !dropdown.classList.contains('open');
+      closeDropdowns(shouldOpen ? dropdown : undefined);
+      dropdown.classList.toggle('open', shouldOpen);
+      toggle.setAttribute('aria-expanded', String(shouldOpen));
     });
   });
 
@@ -153,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
   navScrim?.addEventListener('click', () => setMenu(false));
   navLinks.addEventListener('click', event => {
     const link = event.target.closest('a');
-    if (link && !link.matches('.dropdown > a')) setMenu(false);
+    if (link) setMenu(false);
   });
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape' && hamburgerBtn.getAttribute('aria-expanded') === 'true') {
@@ -171,36 +167,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
   if (target.pathname === location.pathname) link.setAttribute('aria-current', 'page');
 });
 
-// Let visitors explore content by role without leaving the homepage.
-const audienceTabs = [...document.querySelectorAll('[data-audience-tab]')];
-const audiencePanels = [...document.querySelectorAll('[data-audience-panel]')];
-if (audienceTabs.length && audiencePanels.length) {
-  const activateAudience = (tab, focus = false) => {
-    const audience = tab.dataset.audienceTab;
-    audienceTabs.forEach(item => {
-      const selected = item === tab;
-      item.setAttribute('aria-selected', String(selected));
-      item.tabIndex = selected ? 0 : -1;
-    });
-    audiencePanels.forEach(panel => {
-      panel.hidden = panel.dataset.audiencePanel !== audience;
-    });
-    if (focus) tab.focus();
-  };
-  audienceTabs.forEach((tab, index) => {
-    tab.addEventListener('click', () => activateAudience(tab));
-    tab.addEventListener('keydown', event => {
-      if (!['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
-      event.preventDefault();
-      let next = index;
-      if (event.key === 'Home') next = 0;
-      else if (event.key === 'End') next = audienceTabs.length - 1;
-      else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % audienceTabs.length;
-      else next = (index - 1 + audienceTabs.length) % audienceTabs.length;
-      activateAudience(audienceTabs[next], true);
-    });
-  });
-}
 // Add fast client-side search to long project tables.
 document.querySelectorAll('.proj-table').forEach((table, index) => {
   const rows = [...table.querySelectorAll('tbody tr')];
@@ -259,45 +225,6 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
     if (event.target === dialog) dialog.close();
   });
 }
-
-// Offer privacy-friendly contextual guidance to returning visitors.
-(() => {
-  const currentPage = location.pathname.split('/').pop() || 'index.html';
-  const guide = document.getElementById('returning-guide');
-  const suggestions = {
-    'services.html': ['Continue comparing services', 'Return to the testing methods and specifications you viewed.', 'services.html'],
-    'projects-completed.html': ['Continue exploring project experience', 'Return to visual case studies and detailed project records.', 'projects-completed.html'],
-    'projects-ongoing.html': ['Continue exploring project experience', 'Return to selected records from the company project archive.', 'projects-ongoing.html'],
-    'technical.html': ['Continue reviewing testing technology', 'Return to equipment, software and technical reference material.', 'technical.html'],
-    'photo.html': ['Continue viewing field work', 'Return to photographs of testing, monitoring and investigation work.', 'photo.html'],
-    'video.html': ['Continue viewing field work', 'Return to the company video gallery.', 'video.html'],
-    'research.html': ['Continue exploring research', 'Return to PIT classification research and technical publications.', 'research.html'],
-    'about.html': ['Continue learning about PileTeST', 'Return to the company profile, team and technical expertise.', 'about.html'],
-    'achievements.html': ['Continue viewing company achievements', 'Return to certification and testing milestone records.', 'achievements.html']
-  };
-  try {
-    const previousPage = localStorage.getItem('piletest:last-page');
-    const dismissed = sessionStorage.getItem('piletest:guide-dismissed') === 'true';
-    if (currentPage === 'index.html' && guide && previousPage && suggestions[previousPage] && !dismissed) {
-      const [title, copy, href] = suggestions[previousPage];
-      guide.querySelector('#returning-title').textContent = title;
-      guide.querySelector('#returning-copy').textContent = copy;
-      guide.querySelector('#returning-link').href = href;
-      guide.hidden = false;
-      requestAnimationFrame(() => guide.classList.add('visible'));
-      guide.querySelector('#returning-close').addEventListener('click', () => {
-        guide.classList.remove('visible');
-        sessionStorage.setItem('piletest:guide-dismissed', 'true');
-        setTimeout(() => { guide.hidden = true; }, reduceMotion ? 0 : 200);
-      });
-    } else if (currentPage !== 'index.html' && suggestions[currentPage]) {
-      localStorage.setItem('piletest:last-page', currentPage);
-      sessionStorage.removeItem('piletest:guide-dismissed');
-    }
-  } catch {
-    // Storage may be unavailable in private browsing; the site remains fully usable.
-  }
-})();
 
 // Rotate the homepage field-work reel every two seconds with accessible controls.
 (() => {
