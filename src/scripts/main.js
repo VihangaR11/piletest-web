@@ -243,8 +243,12 @@ document.querySelectorAll('[data-pdf-loader]').forEach(loader => {
   const frame = loader.querySelector('.pdf-viewer[data-src]');
   if (!button || !preview || !loading || !frame) return;
 
-  button.addEventListener('click', () => {
-    button.disabled = true;
+  button.addEventListener('click', event => {
+    // Mobile browsers handle PDFs more reliably in their native full-page viewer.
+    if (window.matchMedia('(max-width: 900px), (pointer: coarse)').matches) return;
+
+    event.preventDefault();
+    button.setAttribute('aria-disabled', 'true');
     preview.hidden = true;
     loading.hidden = false;
     frame.hidden = false;
