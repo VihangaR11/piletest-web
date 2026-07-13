@@ -298,6 +298,80 @@ if (galleryImages.length && typeof HTMLDialogElement !== 'undefined') {
     // Storage may be unavailable in private browsing; the site remains fully usable.
   }
 })();
+
+// Rotate the homepage field-work reel every two seconds with accessible controls.
+(() => {
+  const reel = document.querySelector('[data-hero-reel]');
+  if (!reel) return;
+
+  const slides = [...reel.querySelectorAll('[data-reel-slide]')];
+  const dots = [...reel.querySelectorAll('[data-reel-dot]')];
+  const pauseButton = reel.querySelector('[data-reel-toggle]');
+  if (slides.length < 2 || dots.length !== slides.length || !pauseButton) return;
+
+  let current = 0;
+  let timer;
+  let userPaused = false;
+
+  const showSlide = index => {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === current;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+    });
+    dots.forEach((dot, dotIndex) => {
+      const active = dotIndex === current;
+      dot.classList.toggle('is-active', active);
+      if (active) dot.setAttribute('aria-current', 'true');
+      else dot.removeAttribute('aria-current');
+    });
+  };
+
+  const stopReel = () => {
+    window.clearInterval(timer);
+    timer = undefined;
+  };
+
+  const startReel = () => {
+    stopReel();
+    if (reduceMotion || userPaused || document.hidden) return;
+    timer = window.setInterval(() => showSlide(current + 1), 2000);
+  };
+
+  const syncPauseButton = () => {
+    pauseButton.setAttribute('aria-pressed', String(userPaused));
+    pauseButton.setAttribute('aria-label', userPaused ? 'Play image reel' : 'Pause image reel');
+    pauseButton.querySelector('span').textContent = userPaused ? '▶' : 'Ⅱ';
+  };
+
+  dots.forEach(dot => dot.addEventListener('click', () => {
+    showSlide(Number(dot.dataset.reelDot));
+    startReel();
+  }));
+  pauseButton.addEventListener('click', () => {
+    userPaused = !userPaused;
+    syncPauseButton();
+    if (userPaused) stopReel();
+    else startReel();
+  });
+  reel.addEventListener('mouseenter', stopReel);
+  reel.addEventListener('mouseleave', startReel);
+  reel.addEventListener('focusin', stopReel);
+  reel.addEventListener('focusout', () => window.setTimeout(() => {
+    if (!reel.contains(document.activeElement)) startReel();
+  }, 0));
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopReel();
+    else startReel();
+  });
+
+  pauseButton.hidden = reduceMotion;
+  showSlide(0);
+  syncPauseButton();
+  startReel();
+})();
+
 // Provide a compact return control on long pages.
 const backToTop = document.createElement('button');
 backToTop.className = 'back-to-top';
