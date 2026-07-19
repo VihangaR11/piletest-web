@@ -8,16 +8,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!form) return;
 
-  // Prefill requests arriving from the technical-document library.
+  // Prefill requests arriving from service, resources, equipment, news and quote links.
   const params = new URLSearchParams(window.location.search);
   const requestedService = params.get('service')?.trim();
-  const requestType = params.get('request');
+  const requestType = params.get('request')?.trim();
+  const inquiryType = form.elements.inquiry_type;
+  const requestConfig = {
+    technical: { type: 'Technical document request', message: `Please send the current technical specification and method statement${requestedService ? ` for ${requestedService}` : ''}.` },
+    quote: { type: 'Quotation request', message: 'Please provide a quotation for the following project:\n\nProject name:\nSite location:\nFoundation type:\nTesting scope and quantity:\nTarget load (if applicable):\nRequired date:' },
+    equipment: { type: 'Technical inquiry', message: 'Please provide the current equipment schedule and testing capacity for the following requirement:\n\n' },
+    certificate: { type: 'General enquiry', message: 'Please send the current ISO certificate and applicable scope.' },
+    event: { type: 'Media / event', message: 'Event name and organizer:\nProposed date:\nParticipation request:\n' },
+    training: { type: 'Training', message: 'Please advise on current technical training availability for:\n\n' },
+  };
   if (requestedService) {
     const matchingOption = [...form.service.options].find(option => option.textContent.trim() === requestedService);
     form.service.value = matchingOption?.value || 'Other';
-    if (requestType === 'technical' && !form.message.value.trim()) {
-      form.message.value = `Please send the current technical specification and method statement for ${requestedService}.`;
-    }
+  }
+  const prefill = requestConfig[requestType];
+  if (prefill) {
+    inquiryType.value = prefill.type;
+    if (!form.message.value.trim()) form.message.value = prefill.message;
   }
 
   form.addEventListener('submit', async (e) => {
@@ -30,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       company:    form.company.value.trim(),
       email:      form.email.value.trim(),
       phone:      form.phone.value.trim(),
+      inquiry_type: inquiryType.value,
       service:    form.service.value,
       message:    form.message.value.trim(),
     };
@@ -54,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!FORMSPREE_ENDPOINT.startsWith('https://formspree.io/f/')) {
       showResult('error',
-        '⚠️ The enquiry form is temporarily unavailable. Please email piletestcon@gmail.com.');
+        '⚠️ The enquiry form is temporarily unavailable. Please email info@piletest.lk.');
       return;
     }
 
@@ -64,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     try {
       const formData = new FormData(form);
-      formData.set('_subject', `Website enquiry: ${data.service || 'Pile testing services'}`);
+      formData.set('_subject', `Website ${data.inquiry_type}: ${data.service || 'General enquiry'}`);
       formData.set('submitted_at', new Date().toISOString());
       formData.set('page_url', window.location.href);
 
@@ -90,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '❌ Could not connect to server. Please call us: +94 70 3 600 600');
     } finally {
       btn.disabled    = false;
-      btn.textContent = 'Send Message →';
+      btn.textContent = 'Send Enquiry →';
     }
   });
 

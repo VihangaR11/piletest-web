@@ -120,5 +120,12 @@ export const navigation: readonly NavItem[] = [
     { label: 'Why Join Us', href: 'careers.html#why-join-us' },
     { label: 'Submit Your CV', href: 'careers.html#submit-cv' }
   ] },
-  { label: 'Contact Us', href: 'contact.html' }
+  { label: 'Contact Us', href: 'contact.html', children: [
+    { label: 'Contact Information', href: 'contact.html#contact-information' },
+    { label: 'Office Location', href: 'contact.html#office-location' },
+    { label: 'Inquiry Form', href: 'contact.html#inquiry-form' },
+    { label: 'Request a Quotation', href: 'contact.html#request-quotation' },
+    { label: 'Emergency Hotline', href: 'contact.html#emergency-hotline' },
+    { label: 'Google Map Location', href: 'contact.html#google-map' }
+  ] }
 ];

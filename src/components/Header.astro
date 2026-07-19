@@ -43,12 +43,12 @@ const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
             </div>
           </div>
         ) : <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
-        <a href={`${base}contact.html`} class="mobile-nav-cta">Request a Quote</a>
+        <a href={`${base}contact.html#request-quotation`} class="mobile-nav-cta">Request a Quote</a>
         <a href={`${base}brochure.html`} class="mobile-profile-link">Company Profile</a>
       </div>
       <button id="mobile-menu-btn" class="hamburger" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
       <div class="nav-actions">
-        <a href={`${base}contact.html`} class="nav-quote">Request a Quote</a>
+        <a href={`${base}contact.html#request-quotation`} class="nav-quote">Request a Quote</a>
         <a href={`${base}brochure.html`} class="nav-profile">Company Profile</a>
       </div>
     </div>
