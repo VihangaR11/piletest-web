@@ -2,6 +2,11 @@
 import { navigation, site } from '../data/site';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
+const pageOf = (href: string) => href.split('#')[0];
+const isActive = (item: (typeof navigation)[number]) =>
+  pageOf(item.href) === currentPath || item.children?.some((child) =>
+    pageOf(child.href) === currentPath || child.children?.some((grandchild) => pageOf(grandchild.href) === currentPath)
+  );
 ---
 <header class="site-header">
   <div class="utility-bar">
@@ -12,6 +17,7 @@ const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
       </div>
       <div class="utility-trust">
         <span>ISO 9001:2015 Certified</span>
+        <a class="utility-profile" href={`${base}brochure.html`}>Company Profile</a>
         <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="PileTeST on LinkedIn">in</a>
         <a href={site.facebook} target="_blank" rel="noopener noreferrer" aria-label="PileTeST on Facebook">f</a>
       </div>
@@ -25,8 +31,8 @@ const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
       </a>
       <div class="nav-links" id="primary-navigation">
         {navigation.map((item) => item.children ? (
-          <div class:list={['dropdown', item.label === 'Services' && 'dropdown-mega']}>
-            <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined} data-mobile-submenu-trigger>
+          <div class:list={['dropdown', item.children.some((child) => child.children?.length) && 'dropdown-mega']}>
+            <a href={`${base}${item.href}`} aria-current={isActive(item) ? 'page' : undefined} data-mobile-submenu-trigger>
               <span>{item.label}</span>
               <span class="nav-caret" aria-hidden="true"></span>
             </a>
@@ -43,13 +49,14 @@ const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
             </div>
           </div>
         ) : <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
-        <a href={`${base}contact.html#request-quotation`} class="mobile-nav-cta">Request a Quote</a>
+        <a href={`${base}contact.html#request-quotation`} class="mobile-quote-link">Request a Quote</a>
         <a href={`${base}brochure.html`} class="mobile-profile-link">Company Profile</a>
+        <a href={`${base}contact.html`} class="mobile-nav-cta">Contact Us</a>
       </div>
       <button id="mobile-menu-btn" class="hamburger" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">Menu</button>
       <div class="nav-actions">
         <a href={`${base}contact.html#request-quotation`} class="nav-quote">Request a Quote</a>
-        <a href={`${base}brochure.html`} class="nav-profile">Company Profile</a>
+        <a href={`${base}contact.html`} class="nav-contact">Contact Us</a>
       </div>
     </div>
     <button class="nav-scrim" id="nav-scrim" type="button" aria-label="Close navigation" tabindex="-1"></button>

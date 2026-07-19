@@ -21,19 +21,18 @@ export interface NavItem {
 }
 
 export const navigation: readonly NavItem[] = [
-  { label: 'Home', href: 'index.html' },
-  { label: 'About Us', href: 'about.html', children: [
+  { label: 'Company', href: 'about.html', children: [
     { label: 'Company Overview', href: 'about.html#company-overview' },
     { label: 'Vision & Mission', href: 'about.html#vision-mission' },
     { label: 'Our Journey', href: 'about.html#our-journey' },
     { label: 'Leadership Team', href: 'about.html#leadership-team' },
     { label: 'Technical Team', href: 'about.html#technical-team' },
     { label: 'External Consultants', href: 'about.html#external-consultants' },
-    { label: 'Certifications', href: 'about.html#certifications' },
+    { label: 'Certifications & Quality', href: 'about.html#certifications' },
     { label: 'HSE & Quality Policy', href: 'about.html#hsq-policy' },
     { label: 'Corporate Information', href: 'about.html#corporate-information' }
   ] },
-  { label: 'Services', href: 'services.html', children: [
+  { label: 'Services & Technology', href: 'services.html', children: [
     { label: 'Pile Testing Services', href: 'services.html#pile-testing-services', children: [
       { label: 'Dynamic Load Testing (PDA)', href: 'services.html#pda' },
       { label: 'Static Load Testing (SLT)', href: 'services.html#slt' },
@@ -70,6 +69,16 @@ export const navigation: readonly NavItem[] = [
       { label: 'Retaining & Ground Improvement', href: 'services.html#retaining-structures' },
       { label: 'Anchor & Solar Foundation Tests', href: 'services.html#anchor-pullout' },
       { label: 'Beam & Plate Load Testing', href: 'services.html#beam-load-testing' }
+    ] },
+    { label: 'Equipment & Technology', href: 'equipment.html', children: [
+      { label: 'Equipment Overview', href: 'equipment.html' },
+      { label: 'Pile Driving Analyzer (PDA)', href: 'equipment.html#pda-system' },
+      { label: 'PIT & CSL Equipment', href: 'equipment.html#pit-equipment' },
+      { label: 'Static Load Testing Systems', href: 'equipment.html#static-load-systems' },
+      { label: 'Instrumentation Systems', href: 'equipment.html#instrumentation-systems' },
+      { label: 'Monitoring Instruments', href: 'equipment.html#monitoring-instruments' },
+      { label: 'Laboratory Equipment', href: 'equipment.html#laboratory-equipment' },
+      { label: 'Calibration & Data Acquisition', href: 'equipment.html#calibration-facilities' }
     ] }
   ] },
   { label: 'Projects', href: 'projects.html', children: [
@@ -82,36 +91,32 @@ export const navigation: readonly NavItem[] = [
     { label: 'Ongoing Projects', href: 'projects-ongoing.html' },
     { label: 'Completed Projects', href: 'projects-completed.html' }
   ] },
-  { label: 'Equipment', href: 'equipment.html', children: [
-    { label: 'Pile Driving Analyzer (PDA)', href: 'equipment.html#pda-system' },
-    { label: 'PIT Equipment', href: 'equipment.html#pit-equipment' },
-    { label: 'CSL Equipment', href: 'equipment.html#csl-equipment' },
-    { label: 'Static Load Testing Systems', href: 'equipment.html#static-load-systems' },
-    { label: 'Instrumentation Systems', href: 'equipment.html#instrumentation-systems' },
-    { label: 'Monitoring Instruments', href: 'equipment.html#monitoring-instruments' },
-    { label: 'Laboratory Equipment', href: 'equipment.html#laboratory-equipment' },
-    { label: 'Calibration Facilities', href: 'equipment.html#calibration-facilities' },
-    { label: 'Data Acquisition Systems', href: 'equipment.html#data-acquisition' }
-  ] },
-  { label: 'Resources', href: 'technical.html', children: [
-    { label: 'Technical Articles', href: 'technical.html#technical-articles' },
-    { label: 'Case Studies', href: 'technical.html#case-studies' },
-    { label: 'Testing Standards', href: 'technical.html#testing-standards' },
-    { label: 'Design Guidelines', href: 'technical.html#design-guidelines' },
-    { label: 'Downloads', href: 'technical.html#downloads' },
-    { label: 'Brochures', href: 'technical.html#brochures' },
-    { label: 'Method Statements', href: 'technical.html#method-statements' },
-    { label: 'Publications', href: 'technical.html#publications' },
-    { label: 'Frequently Asked Questions', href: 'technical.html#faq' }
-  ] },
-  { label: 'News & Media', href: 'news.html', children: [
-    { label: 'Company News', href: 'news.html#company-news' },
-    { label: 'Latest Projects', href: 'news.html#latest-projects' },
-    { label: 'Events & Conferences', href: 'news.html#events-conferences' },
-    { label: 'Training Programs', href: 'news.html#training-programs' },
-    { label: 'Photo Gallery', href: 'news.html#photo-gallery' },
-    { label: 'Video Gallery', href: 'news.html#video-gallery' },
-    { label: 'Achievements & Awards', href: 'news.html#achievements-awards' }
+  { label: 'Resources & Media', href: 'technical.html', children: [
+    { label: 'Technical Resources', href: 'technical.html', children: [
+      { label: 'Technical Articles', href: 'technical.html#technical-articles' },
+      { label: 'Testing Standards', href: 'technical.html#testing-standards' },
+      { label: 'Design Guidelines', href: 'technical.html#design-guidelines' },
+      { label: 'Downloads & Brochures', href: 'technical.html#downloads' },
+      { label: 'Method Statements', href: 'technical.html#method-statements' },
+      { label: 'Company Profile', href: 'brochure.html' }
+    ] },
+    { label: 'Research & Knowledge', href: 'research.html', children: [
+      { label: 'Research & Development', href: 'research.html' },
+      { label: 'Case Studies', href: 'technical.html#case-studies' },
+      { label: 'Publications', href: 'technical.html#publications' },
+      { label: 'Frequently Asked Questions', href: 'technical.html#faq' }
+    ] },
+    { label: 'News & Events', href: 'news.html', children: [
+      { label: 'Company News', href: 'news.html#company-news' },
+      { label: 'Latest Projects', href: 'news.html#latest-projects' },
+      { label: 'Events & Conferences', href: 'news.html#events-conferences' },
+      { label: 'Training Programs', href: 'news.html#training-programs' },
+      { label: 'Achievements & Awards', href: 'news.html#achievements-awards' }
+    ] },
+    { label: 'Media Galleries', href: 'photo.html', children: [
+      { label: 'Photo Gallery', href: 'photo.html' },
+      { label: 'Video Gallery', href: 'video.html' }
+    ] }
   ] },
   { label: 'Careers', href: 'careers.html', children: [
     { label: 'Current Vacancies', href: 'careers.html#current-vacancies' },
@@ -119,13 +124,5 @@ export const navigation: readonly NavItem[] = [
     { label: 'Graduate Training', href: 'careers.html#graduate-training' },
     { label: 'Why Join Us', href: 'careers.html#why-join-us' },
     { label: 'Submit Your CV', href: 'careers.html#submit-cv' }
-  ] },
-  { label: 'Contact Us', href: 'contact.html', children: [
-    { label: 'Contact Information', href: 'contact.html#contact-information' },
-    { label: 'Office Location', href: 'contact.html#office-location' },
-    { label: 'Inquiry Form', href: 'contact.html#inquiry-form' },
-    { label: 'Request a Quotation', href: 'contact.html#request-quotation' },
-    { label: 'Emergency Hotline', href: 'contact.html#emergency-hotline' },
-    { label: 'Google Map Location', href: 'contact.html#google-map' }
   ] }
 ];
