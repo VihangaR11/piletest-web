@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navScrim?.classList.toggle('active', shouldOpen);
     hamburgerBtn.setAttribute('aria-expanded', String(shouldOpen));
     hamburgerBtn.setAttribute('aria-label', shouldOpen ? 'Close navigation' : 'Open navigation');
-    hamburgerBtn.textContent = shouldOpen ? '×' : '☰';
+    hamburgerBtn.textContent = shouldOpen ? 'Close' : 'Menu';
     document.body.classList.toggle('nav-open', shouldOpen);
     if (!shouldOpen) closeDropdowns();
   };

@@ -1,18 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import content from '../content/pages/index.html?raw';
-const faqSchema = {
-  '@type': 'FAQPage',
-  mainEntity: [
-    ['What is a pile foundation?', 'A pile is a long foundation element that transfers structural loads to stronger soil or rock deeper below the ground.'],
-    ['Why are piles tested?', 'Testing provides measured information about integrity, capacity, movement or concrete quality so engineers can assess foundation performance.'],
-    ['Does pile testing damage the pile?', 'Many methods, including PIT and CSL, are non-destructive. Load-testing arrangements vary, so the appropriate method is selected for the project.'],
-    ['How long does testing take?', 'Duration depends on the method, pile quantity, access and site readiness. The team confirms requirements when reviewing a project enquiry.'],
-    ['What is needed to request a quotation?', 'Useful information includes the site location, pile type, diameter, length, quantity, expected load, drawings, specification and preferred programme.'],
-    ['Where does PileTeST work?', 'The company serves construction projects across Sri Lanka from its offices in the Colombo area.']
-  ].map(([name, text]) => ({ '@type': 'Question', name, acceptedAnswer: { '@type': 'Answer', text } }))
-};
 ---
-<BaseLayout title="PileTeST Consultants | Quality Assurance of Deep Foundations" description="Independent pile testing and geotechnical engineering services in Sri Lanka, including PDA, PIT, CSL, static load testing and foundation monitoring." structuredData={faqSchema}>
+<BaseLayout title="PileTeST Consultants | Engineering Confidence from the Ground Up" description="Sri Lankan specialists in pile testing, geotechnical investigation, non-destructive testing, laboratory testing and foundation monitoring.">
   <Fragment set:html={content} />
 </BaseLayout>

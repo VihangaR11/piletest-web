@@ -104,7 +104,7 @@ const schemaJson = JSON.stringify({ '@context': 'https://schema.org', '@graph': 
     <a class="skip-link" href="#content-start">Skip to main content</a>
     <Header />
     <main><slot /></main>
-    {currentPage !== 'contact.html' && <PageCTA />}
+    {currentPage !== 'contact.html' && currentPage !== 'index.html' && <PageCTA />}
     <Footer />
     <script is:inline src={mainScriptUrl}></script>
   </body>

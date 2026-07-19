@@ -18,7 +18,7 @@ export interface NavItem {
 
 export const navigation: readonly NavItem[] = [
   { label: 'Home', href: 'index.html' },
-  { label: 'About', href: 'about.html', children: [
+  { label: 'About Us', href: 'about.html', children: [
     { label: 'Vision & Quality', href: 'about.html#vision-quality' },
     { label: 'Our Team', href: 'about.html#our-team' },
     { label: 'Achievements', href: 'achievements.html' },
@@ -36,15 +36,17 @@ export const navigation: readonly NavItem[] = [
     { label: 'Ongoing Projects', href: 'projects-ongoing.html' },
     { label: 'Completed Projects', href: 'projects-completed.html' }
   ] },
-  { label: 'Gallery', href: 'photo.html', children: [
+  { label: 'Equipment', href: 'technical.html#equipment', children: [
+    { label: 'Equipment & Systems', href: 'technical.html#equipment' },
+    { label: 'Analysis Software', href: 'technical.html#software' },
+    { label: 'Testing Capacities', href: 'technical.html#equipment' }
+  ] },
+  { label: 'Resources', href: 'technical.html#technical-library', children: [
+    { label: 'Request Technical Documents', href: 'technical.html#technical-library' },
+    { label: 'Method References', href: 'technical.html#methods' },
+    { label: 'Research & Development', href: 'research.html' },
     { label: 'Photo Gallery', href: 'photo.html' },
     { label: 'Video Gallery', href: 'video.html' }
   ] },
-  { label: 'Technical', href: 'technical.html', children: [
-    { label: 'Equipment & Systems', href: 'technical.html#equipment' },
-    { label: 'Analysis Software', href: 'technical.html#software' },
-    { label: 'Request Technical Documents', href: 'technical.html#technical-library' },
-    { label: 'Method References', href: 'technical.html#methods' }
-  ] },
-  { label: 'R & D', href: 'research.html' }
+  { label: 'Contact Us', href: 'contact.html' }
 ];
