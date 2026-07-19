@@ -4,9 +4,9 @@ import content from '../content/pages/services.html?raw';
 const serviceSchema = {
   '@type': 'ItemList',
   name: 'PileTeST foundation testing and geotechnical services',
-  itemListElement: ['Dynamic Pile Testing (PDA)', 'Pile Integrity Testing (PIT)', 'Cross-Hole Sonic Logging (CSL)', 'Static Load Testing', 'Vibration Monitoring', 'Instrumented Load Testing', 'Geotechnical Investigation'].map((name, index) => ({ '@type': 'ListItem', position: index + 1, name }))
+  itemListElement: ['Pile Testing Services', 'Geotechnical Investigation', 'Non-Destructive Testing', 'Monitoring and Instrumentation', 'Laboratory Testing', 'Geotechnical Consultancy and Specialized Testing'].map((name, index) => ({ '@type': 'ListItem', position: index + 1, name }))
 };
 ---
-<BaseLayout title="Services | PileTeST Consultants" description="Pile testing and geotechnical services in Sri Lanka: PDA, PIT, CSL, static and lateral load testing, vibration monitoring and site investigation." structuredData={serviceSchema}>
+<BaseLayout title="Pile Testing & Geotechnical Services | PileTeST Consultants" description="Pile testing, geotechnical investigation, non-destructive testing, monitoring, laboratory testing and foundation engineering consultancy in Sri Lanka." structuredData={serviceSchema}>
   <Fragment set:html={content} />
 </BaseLayout>

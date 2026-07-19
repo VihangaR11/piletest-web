@@ -25,7 +25,7 @@ const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
       </a>
       <div class="nav-links" id="primary-navigation">
         {navigation.map((item) => item.children ? (
-          <div class="dropdown">
+          <div class:list={['dropdown', item.label === 'Services' && 'dropdown-mega']}>
             <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined} data-mobile-submenu-trigger>
               <span>{item.label}</span>
               <span class="nav-caret" aria-hidden="true"></span>
@@ -34,7 +34,12 @@ const currentPath = Astro.url.pathname.split('/').pop() || 'index.html';
               <span class="nav-caret" aria-hidden="true"></span>
             </button>
             <div class="dropdown-content">
-              {item.children.map((child) => <a href={`${base}${child.href}`}>{child.label}</a>)}
+              {item.children.map((child) => child.children ? (
+                <div class="nav-mega-group">
+                  <a class="nav-mega-heading" href={`${base}${child.href}`}>{child.label}</a>
+                  <div>{child.children.map((grandchild) => <a href={`${base}${grandchild.href}`}>{grandchild.label}</a>)}</div>
+                </div>
+              ) : <a href={`${base}${child.href}`}>{child.label}</a>)}
             </div>
           </div>
         ) : <a href={`${base}${item.href}`} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>)}
