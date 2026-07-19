@@ -113,5 +113,12 @@ export const navigation: readonly NavItem[] = [
     { label: 'Video Gallery', href: 'news.html#video-gallery' },
     { label: 'Achievements & Awards', href: 'news.html#achievements-awards' }
   ] },
+  { label: 'Careers', href: 'careers.html', children: [
+    { label: 'Current Vacancies', href: 'careers.html#current-vacancies' },
+    { label: 'Internship Opportunities', href: 'careers.html#internships' },
+    { label: 'Graduate Training', href: 'careers.html#graduate-training' },
+    { label: 'Why Join Us', href: 'careers.html#why-join-us' },
+    { label: 'Submit Your CV', href: 'careers.html#submit-cv' }
+  ] },
   { label: 'Contact Us', href: 'contact.html' }
 ];

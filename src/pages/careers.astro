@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import content from '../content/pages/careers.html?raw';
+
+const careersSchema = {
+  '@type': 'WebPage',
+  name: 'Careers at PileTeST Consultants',
+  description: 'Career vacancies, internship enquiries, graduate interest and CV submission guidance for PileTeST Consultants.'
+};
+---
+<BaseLayout title="Careers | PileTeST Consultants" description="Explore vacancies, internship and graduate opportunities, workplace values and CV submission guidance at PileTeST Consultants in Sri Lanka." structuredData={careersSchema}>
+  <Fragment set:html={content} />
+</BaseLayout>
