@@ -93,12 +93,16 @@ export const navigation: readonly NavItem[] = [
     { label: 'Calibration Facilities', href: 'equipment.html#calibration-facilities' },
     { label: 'Data Acquisition Systems', href: 'equipment.html#data-acquisition' }
   ] },
-  { label: 'Resources', href: 'technical.html#technical-library', children: [
-    { label: 'Request Technical Documents', href: 'technical.html#technical-library' },
-    { label: 'Method References', href: 'technical.html#methods' },
-    { label: 'Research & Development', href: 'research.html' },
-    { label: 'Photo Gallery', href: 'photo.html' },
-    { label: 'Video Gallery', href: 'video.html' }
+  { label: 'Resources', href: 'technical.html', children: [
+    { label: 'Technical Articles', href: 'technical.html#technical-articles' },
+    { label: 'Case Studies', href: 'technical.html#case-studies' },
+    { label: 'Testing Standards', href: 'technical.html#testing-standards' },
+    { label: 'Design Guidelines', href: 'technical.html#design-guidelines' },
+    { label: 'Downloads', href: 'technical.html#downloads' },
+    { label: 'Brochures', href: 'technical.html#brochures' },
+    { label: 'Method Statements', href: 'technical.html#method-statements' },
+    { label: 'Publications', href: 'technical.html#publications' },
+    { label: 'Frequently Asked Questions', href: 'technical.html#faq' }
   ] },
   { label: 'Contact Us', href: 'contact.html' }
 ];

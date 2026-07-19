@@ -3,15 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import content from '../content/pages/technical.html?raw';
 
 const technicalTopics = [
-  'Dynamic Pile Testing (PDA)', 'Cross-Hole Sonic Logging (CSL)',
-  'Pile Integrity Testing (PIT)', 'Static Load Testing (MLT)',
-  'Concrete Compression Testing', 'Vibration Monitoring',
-  'Noise Level Monitoring', 'Geotechnical Investigation',
-  'Lateral Load Test', 'Instrumented Load Testing (IMLT)',
-  'Rebound Hammer Testing', 'Pullout Testing',
-  'Inclinometer Installation and Monitoring',
-  'Piezometer Installation and Monitoring', 'Settlement Monitoring',
-  'Crack Surveying and Monitoring'
+  'Technical Articles', 'Case Studies', 'Testing Standards',
+  'Design Guidelines', 'Downloads', 'Brochures', 'Method Statements',
+  'Publications', 'Frequently Asked Questions'
 ];
 
 const structuredData = {
@@ -23,6 +17,6 @@ const structuredData = {
   }))
 };
 ---
-<BaseLayout title="Technical Resources | PileTeST Consultants" description="Explore PileTeST testing equipment, analysis software, method references and request current technical specifications or method statements." structuredData={structuredData}>
+<BaseLayout title="Technical Resources | PileTeST Consultants" description="Explore PileTeST technical articles, case studies, testing standards, design guidance, downloads, method statements, publications and FAQs." structuredData={structuredData}>
   <Fragment set:html={content} />
 </BaseLayout>
