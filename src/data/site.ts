@@ -19,10 +19,15 @@ export interface NavItem {
 export const navigation: readonly NavItem[] = [
   { label: 'Home', href: 'index.html' },
   { label: 'About Us', href: 'about.html', children: [
-    { label: 'Vision & Quality', href: 'about.html#vision-quality' },
-    { label: 'Our Team', href: 'about.html#our-team' },
-    { label: 'Achievements', href: 'achievements.html' },
-    { label: 'Brochure', href: 'brochure.html' }
+    { label: 'Company Overview', href: 'about.html#company-overview' },
+    { label: 'Vision & Mission', href: 'about.html#vision-mission' },
+    { label: 'Our Journey', href: 'about.html#our-journey' },
+    { label: 'Leadership Team', href: 'about.html#leadership-team' },
+    { label: 'Technical Team', href: 'about.html#technical-team' },
+    { label: 'External Consultants', href: 'about.html#external-consultants' },
+    { label: 'Certifications', href: 'about.html#certifications' },
+    { label: 'HSE & Quality Policy', href: 'about.html#hsq-policy' },
+    { label: 'Corporate Information', href: 'about.html#corporate-information' }
   ] },
   { label: 'Services', href: 'services.html', children: [
     { label: 'Dynamic & Integrity Testing', href: 'services.html#foundation-integrity' },
