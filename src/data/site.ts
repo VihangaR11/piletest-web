@@ -104,5 +104,14 @@ export const navigation: readonly NavItem[] = [
     { label: 'Publications', href: 'technical.html#publications' },
     { label: 'Frequently Asked Questions', href: 'technical.html#faq' }
   ] },
+  { label: 'News & Media', href: 'news.html', children: [
+    { label: 'Company News', href: 'news.html#company-news' },
+    { label: 'Latest Projects', href: 'news.html#latest-projects' },
+    { label: 'Events & Conferences', href: 'news.html#events-conferences' },
+    { label: 'Training Programs', href: 'news.html#training-programs' },
+    { label: 'Photo Gallery', href: 'news.html#photo-gallery' },
+    { label: 'Video Gallery', href: 'news.html#video-gallery' },
+    { label: 'Achievements & Awards', href: 'news.html#achievements-awards' }
+  ] },
   { label: 'Contact Us', href: 'contact.html' }
 ];

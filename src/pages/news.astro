@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import content from '../content/pages/news.html?raw';
+
+const newsSchema = {
+  '@type': 'CollectionPage',
+  name: 'News and media from PileTeST Consultants',
+  description: 'Company updates, project highlights, events, training information, media galleries and achievements.',
+  hasPart: [
+    'Company News', 'Latest Projects', 'Events and Conferences',
+    'Training Programs', 'Photo Gallery', 'Video Gallery', 'Achievements and Awards'
+  ].map((name) => ({ '@type': 'WebPageElement', name }))
+};
+---
+<BaseLayout title="News & Media | PileTeST Consultants" description="Explore verified PileTeST company updates, recent project records, events, training information, field galleries and technical achievements." structuredData={newsSchema}>
+  <Fragment set:html={content} />
+</BaseLayout>
