@@ -82,10 +82,16 @@ export const navigation: readonly NavItem[] = [
     { label: 'Ongoing Projects', href: 'projects-ongoing.html' },
     { label: 'Completed Projects', href: 'projects-completed.html' }
   ] },
-  { label: 'Equipment', href: 'technical.html#equipment', children: [
-    { label: 'Equipment & Systems', href: 'technical.html#equipment' },
-    { label: 'Analysis Software', href: 'technical.html#software' },
-    { label: 'Testing Capacities', href: 'technical.html#equipment' }
+  { label: 'Equipment', href: 'equipment.html', children: [
+    { label: 'Pile Driving Analyzer (PDA)', href: 'equipment.html#pda-system' },
+    { label: 'PIT Equipment', href: 'equipment.html#pit-equipment' },
+    { label: 'CSL Equipment', href: 'equipment.html#csl-equipment' },
+    { label: 'Static Load Testing Systems', href: 'equipment.html#static-load-systems' },
+    { label: 'Instrumentation Systems', href: 'equipment.html#instrumentation-systems' },
+    { label: 'Monitoring Instruments', href: 'equipment.html#monitoring-instruments' },
+    { label: 'Laboratory Equipment', href: 'equipment.html#laboratory-equipment' },
+    { label: 'Calibration Facilities', href: 'equipment.html#calibration-facilities' },
+    { label: 'Data Acquisition Systems', href: 'equipment.html#data-acquisition' }
   ] },
   { label: 'Resources', href: 'technical.html#technical-library', children: [
     { label: 'Request Technical Documents', href: 'technical.html#technical-library' },

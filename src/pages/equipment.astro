@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import content from '../content/pages/equipment.html?raw';
+
+const equipmentSchema = {
+  '@type': 'CollectionPage',
+  name: 'Equipment and technology at PileTeST Consultants',
+  description: 'Foundation testing, structural monitoring, laboratory and data-acquisition systems used by PileTeST Consultants.',
+  hasPart: [
+    'Pile Driving Analyzer (PDA)',
+    'Pile Integrity Testing (PIT) equipment',
+    'Cross-Hole Sonic Logging (CSL) equipment',
+    'Static load testing systems',
+    'Instrumentation systems',
+    'Monitoring instruments',
+    'Laboratory equipment',
+    'Calibration and measurement control',
+    'Data acquisition systems'
+  ].map((name) => ({ '@type': 'WebPageElement', name }))
+};
+---
+<BaseLayout title="Equipment & Technology | PileTeST Consultants" description="Explore PileTeST foundation-testing equipment, monitoring instruments, laboratory systems, calibration controls and data-acquisition technology." structuredData={equipmentSchema}>
+  <Fragment set:html={content} />
+</BaseLayout>
