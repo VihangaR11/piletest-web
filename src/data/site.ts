@@ -73,7 +73,12 @@ export const navigation: readonly NavItem[] = [
     ] }
   ] },
   { label: 'Projects', href: 'projects.html', children: [
-    { label: 'Overall Statistics', href: 'projects.html' },
+    { label: 'Landmark Projects', href: 'projects.html#landmark-projects' },
+    { label: 'High-Rise Buildings', href: 'projects.html#high-rise-projects' },
+    { label: 'Infrastructure Projects', href: 'projects.html#infrastructure-projects' },
+    { label: 'Industrial Projects', href: 'projects.html#industrial-projects' },
+    { label: 'Renewable Energy Projects', href: 'projects.html#renewable-energy-projects' },
+    { label: 'Ports & Marine Projects', href: 'projects.html#ports-marine-projects' },
     { label: 'Ongoing Projects', href: 'projects-ongoing.html' },
     { label: 'Completed Projects', href: 'projects-completed.html' }
   ] },
