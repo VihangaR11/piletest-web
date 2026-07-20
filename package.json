@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro check && astro build",
+    "build": "astro check && astro build && npm run optimize:build",
+    "optimize:build": "node scripts/optimize-build.mjs",
     "validate:build": "node scripts/validate-build.mjs",
     "preview": "astro preview",
     "check": "astro check"
@@ -13,6 +14,7 @@
   "devDependencies": {
     "@astrojs/check": "0.9.9",
     "astro": "7.0.7",
+    "purgecss": "^8.0.0",
     "typescript": "6.0.3"
   }
 }

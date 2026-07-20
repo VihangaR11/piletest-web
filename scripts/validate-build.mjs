@@ -18,6 +18,8 @@ const walk = directory => readdirSync(directory, { withFileTypes: true }).flatMa
 const files = walk(distRoot);
 const relativeFiles = new Set(files.map(file => relative(distRoot, file).replaceAll('\\', '/')));
 const htmlFiles = files.filter(file => file.endsWith('.html'));
+const cssFiles = files.filter(file => file.endsWith('.css'));
+const jsFiles = files.filter(file => file.endsWith('.js'));
 const htmlDocuments = new Map(htmlFiles.map(file => {
   const page = relative(distRoot, file).replaceAll('\\', '/');
   return [page, readFileSync(file, 'utf8')];
@@ -27,6 +29,12 @@ const idsByPage = new Map([...htmlDocuments].map(([page, html]) => [
   new Set([...html.matchAll(/\sid=["']([^"']+)["']/g)].map(match => match[1]))
 ]));
 const attributePattern = /(?:href|src|data-src)=["']([^"']+)["']/g;
+
+const cssBytes = cssFiles.reduce((total, file) => total + readFileSync(file).byteLength, 0);
+const jsBytes = jsFiles.reduce((total, file) => total + readFileSync(file).byteLength, 0);
+if (cssBytes > 150_000) errors.push(`CSS performance budget exceeded: ${cssBytes.toLocaleString()} bytes`);
+if (jsBytes > 30_000) errors.push(`JavaScript performance budget exceeded: ${jsBytes.toLocaleString()} bytes`);
+if (files.some(file => file.endsWith('.map'))) errors.push('production output contains source maps');
 
 const resolveTarget = (page, reference) => {
   if (!reference) return page;
@@ -138,3 +146,4 @@ if (errors.length) {
 if (!hasFormspreeEndpoint) console.log('Contact form: email-client fallback active (Formspree endpoint not configured).');
 
 console.log(`Build validation passed: ${htmlFiles.length} HTML pages and ${relativeFiles.size} files checked.`);
+console.log(`Performance budgets passed: ${cssBytes.toLocaleString()} CSS bytes, ${jsBytes.toLocaleString()} JavaScript bytes.`);
