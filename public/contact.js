@@ -65,8 +65,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (!FORMSPREE_ENDPOINT.startsWith('https://formspree.io/f/')) {
-      showResult('error',
-        '⚠️ The enquiry form is temporarily unavailable. Please email info@piletest.lk.');
+      const subject = encodeURIComponent(`Website ${data.inquiry_type}: ${data.service || 'General enquiry'}`);
+      const body = encodeURIComponent([
+        `Name: ${data.first_name} ${data.last_name}`,
+        `Company: ${data.company || 'Not provided'}`,
+        `Email: ${data.email}`,
+        `Phone: ${data.phone || 'Not provided'}`,
+        `Service: ${data.service || 'General enquiry'}`,
+        '',
+        data.message
+      ].join('\n'));
+      showResult('success', 'Opening your email application with this enquiry. Please review and send the prepared message.');
+      window.location.href = `mailto:info@piletest.lk?subject=${subject}&body=${body}`;
       return;
     }
 

@@ -24,8 +24,12 @@ jobs:
           done
           contact_html="$(curl --fail --silent --show-error --retry 3 \
             --retry-all-errors --max-time 20 "$base/contact.html")"
-          grep -Eq 'data-formspree-endpoint="https://formspree.io/f/[A-Za-z0-9_-]+"' \
-            <<< "$contact_html"
+          if ! grep -Eq 'data-formspree-endpoint="https://formspree.io/f/[A-Za-z0-9_-]+"' \
+            <<< "$contact_html"; then
+            contact_script="$(curl --fail --silent --show-error --retry 3 \
+              --retry-all-errors --max-time 20 "$base/contact.js")"
+            grep -Fq 'mailto:info@piletest.lk?subject=' <<< "$contact_script"
+          fi
           test "$(curl --silent --output /dev/null --write-out '%{http_code}' \
             --max-time 20 "$base/admin.html")" = '404'
           test "$(curl --silent --output /dev/null --write-out '%{http_code}' \

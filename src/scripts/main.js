@@ -77,32 +77,6 @@ document.querySelectorAll('.service-dashboard').forEach(dashboard => {
   }, { threshold: .2 });
   dashboardObserver.observe(dashboard);
 });
-// --- Dark Mode Toggle Logic ---
-const storedTheme = localStorage.getItem('theme');
-const initialTheme = storedTheme === 'dark' ? 'dark' : 'light';
-document.documentElement.setAttribute('data-theme', initialTheme);
-
-document.addEventListener('DOMContentLoaded', () => {
-  const themeToggle = document.getElementById('theme-toggle');
-  if (!themeToggle) return;
-
-  const syncThemeButton = theme => {
-    const useLight = theme === 'dark';
-    themeToggle.textContent = useLight ? '☀' : '☾';
-    themeToggle.setAttribute('aria-label', useLight ? 'Use light theme' : 'Use dark theme');
-    themeToggle.title = useLight ? 'Use light theme' : 'Use dark theme';
-  };
-  syncThemeButton(initialTheme);
-  
-  themeToggle.addEventListener('click', () => {
-    let theme = document.documentElement.getAttribute('data-theme');
-    let newTheme = theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    syncThemeButton(newTheme);
-  });
-});
-
 // --- Mobile Navigation ---
 document.addEventListener('DOMContentLoaded', () => {
   const hamburgerBtn = document.getElementById('mobile-menu-btn');
@@ -130,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburgerBtn.setAttribute('aria-label', shouldOpen ? 'Close navigation' : 'Open navigation');
     hamburgerBtn.textContent = shouldOpen ? 'Close' : 'Menu';
     document.body.classList.toggle('nav-open', shouldOpen);
+    if (shouldOpen) navLinks.querySelector('a')?.focus();
     if (!shouldOpen) closeDropdowns();
   };
 
@@ -170,13 +145,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isMobile()) setMenu(false);
   });
 });
-// Mark the current page or subsection for sighted and screen-reader users.
+// Preserve the active parent section while marking a matching in-page subsection.
 const syncCurrentNavigation = () => {
-  document.querySelectorAll('.nav-links a').forEach(link => {
+  const submenuLinks = document.querySelectorAll('.dropdown-content a');
+  submenuLinks.forEach(link => link.removeAttribute('aria-current'));
+  if (!location.hash) return;
+  submenuLinks.forEach(link => {
     const target = new URL(link.href, location.href);
-    link.removeAttribute('aria-current');
     if (target.pathname === location.pathname && target.hash === location.hash) {
-      link.setAttribute('aria-current', 'page');
+      link.setAttribute('aria-current', 'location');
     }
   });
 };
@@ -323,7 +300,7 @@ document.querySelectorAll('[data-pdf-loader]').forEach(loader => {
   const startReel = () => {
     stopReel();
     if (reduceMotion || saveData || userPaused || document.hidden || !reelVisible) return;
-    timer = window.setInterval(() => void showSlide(current + 1), 2000);
+    timer = window.setInterval(() => void showSlide(current + 1), 5000);
   };
 
   const syncPauseButton = () => {
