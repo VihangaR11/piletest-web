@@ -25,9 +25,7 @@ export const navigation: readonly NavItem[] = [
     { label: 'Company Overview', href: 'about.html#company-overview' },
     { label: 'Vision & Mission', href: 'about.html#vision-mission' },
     { label: 'Our Journey', href: 'about.html#our-journey' },
-    { label: 'Leadership Team', href: 'about.html#leadership-team' },
-    { label: 'Technical Team', href: 'about.html#technical-team' },
-    { label: 'External Consultants', href: 'about.html#external-consultants' },
+    { label: 'Our Team', href: 'about.html#our-team' },
     { label: 'Certifications & Quality', href: 'about.html#certifications' },
     { label: 'HSE & Quality Policy', href: 'about.html#hsq-policy' },
     { label: 'Corporate Information', href: 'about.html#corporate-information' }
